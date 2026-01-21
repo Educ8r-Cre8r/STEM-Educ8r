@@ -933,19 +933,49 @@
 
         /* Featured In Section */
         .featured-in {
-            padding: 4rem 0;
-            background: linear-gradient(135deg, rgba(255, 107, 107, 0.05) 0%, rgba(0, 217, 255, 0.05) 100%);
-            border-top: 1px solid rgba(255, 107, 107, 0.2);
-            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(0, 30, 60, 0.6) 0%, rgba(0, 50, 80, 0.4) 50%, rgba(0, 30, 60, 0.6) 100%);
+            border-top: 2px solid rgba(0, 217, 255, 0.3);
+            border-bottom: 2px solid rgba(0, 217, 255, 0.3);
+            box-shadow: inset 0 0 50px rgba(0, 217, 255, 0.1);
+            position: relative;
+        }
+
+        .featured-in::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--cyan-bright), transparent);
         }
 
         .featured-in h3 {
             text-align: center;
-            font-size: 1.2rem;
-            color: var(--gray-mid);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--cyan-bright);
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 2rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .featured-in h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--cyan-bright), transparent);
+            box-shadow: 0 0 10px var(--cyan-bright);
         }
 
         .media-logos {
@@ -958,31 +988,58 @@
 
         .media-logo {
             text-align: center;
-            transition: all 0.3s ease;
-            opacity: 0.8;
+            transition: all 0.4s ease;
         }
 
         .media-logo-link {
             text-decoration: none;
             cursor: pointer;
+            display: inline-block;
+            padding: 1.5rem 2.5rem;
+            background: rgba(26, 41, 66, 0.5);
+            border: 2px solid rgba(0, 217, 255, 0.3);
+            border-radius: 8px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .media-logo-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .media-logo-link:hover::before {
+            left: 100%;
         }
 
         .media-logo-link:hover {
-            opacity: 1;
-            transform: scale(1.1);
+            transform: translateY(-5px) scale(1.05);
+            border-color: var(--cyan-bright);
+            background: rgba(26, 41, 66, 0.8);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.4), 0 0 20px rgba(0, 217, 255, 0.2);
         }
 
         .media-logo-link p {
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            margin: 0;
+            position: relative;
+            z-index: 1;
         }
 
         .media-logo-link:hover p {
             color: var(--cyan-bright);
+            text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
         }
 
         .media-logo:hover {
             opacity: 1;
-            transform: scale(1.1);
         }
 
         .media-logo img {
@@ -2300,7 +2357,7 @@
     <!-- PDF Modal -->
     <div id="pdfModal" class="media-modal">
         <div class="modal-overlay" onclick="closePdfModal()"></div>
-        <div class="modal-content">
+        <div class="modal-content" id="pdfModalContent">
             <button class="modal-close" onclick="closePdfModal()" aria-label="Close modal">&times;</button>
 
             <div class="modal-header">
@@ -2785,6 +2842,16 @@
         nextBtn.addEventListener('click', nextSlide);
         prevBtn.addEventListener('click', prevSlide);
 
+        // Modal elements (declared early for use in keyboard handlers)
+        const mediaModal = document.getElementById('mediaModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalIframe = document.getElementById('modalIframe');
+        const modalImage = document.getElementById('modalImage');
+        const pdfModal = document.getElementById('pdfModal');
+        const pdfModalTitle = document.getElementById('pdfModalTitle');
+        const pdfModalIframe = document.getElementById('pdfModalIframe');
+        const pdfDownloadBtn = document.getElementById('pdfDownloadBtn');
+
         // Auto-advance carousel every 8 seconds
         let autoAdvance = setInterval(nextSlide, 8000);
 
@@ -2800,22 +2867,23 @@
 
         // Keyboard navigation for carousel
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
-                prevSlide();
-                clearInterval(autoAdvance);
-                autoAdvance = setInterval(nextSlide, 8000);
-            } else if (e.key === 'ArrowRight') {
-                nextSlide();
-                clearInterval(autoAdvance);
-                autoAdvance = setInterval(nextSlide, 8000);
+            // Only respond to arrow keys if no modal is open
+            const isModalOpen = mediaModal.classList.contains('active') || pdfModal.classList.contains('active');
+
+            if (!isModalOpen) {
+                if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                    clearInterval(autoAdvance);
+                    autoAdvance = setInterval(nextSlide, 8000);
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                    clearInterval(autoAdvance);
+                    autoAdvance = setInterval(nextSlide, 8000);
+                }
             }
         });
 
         // Media Modal Functionality
-        const mediaModal = document.getElementById('mediaModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalIframe = document.getElementById('modalIframe');
-        const modalImage = document.getElementById('modalImage');
 
         function openMediaModal(title, url) {
             modalTitle.textContent = title;
@@ -2826,6 +2894,7 @@
             if (isImage) {
                 // Show image, hide iframe
                 modalImage.src = url;
+                modalImage.alt = title; // Set descriptive alt text
                 modalImage.style.display = 'block';
                 modalIframe.style.display = 'none';
                 modalIframe.src = '';
@@ -2835,6 +2904,7 @@
                 modalIframe.style.display = 'block';
                 modalImage.style.display = 'none';
                 modalImage.src = '';
+                modalImage.alt = ''; // Clear alt text when not showing image
             }
 
             mediaModal.classList.add('active');
@@ -2848,24 +2918,12 @@
             modalImage.src = '';
         }
 
-        // Close modal with ESC key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mediaModal.classList.contains('active')) {
-                closeMediaModal();
-            }
-        });
-
         // Prevent modal content clicks from closing modal
         document.querySelector('.modal-content').addEventListener('click', (e) => {
             e.stopPropagation();
         });
 
         // PDF Modal Functionality
-        const pdfModal = document.getElementById('pdfModal');
-        const pdfModalTitle = document.getElementById('pdfModalTitle');
-        const pdfModalIframe = document.getElementById('pdfModalIframe');
-        const pdfDownloadBtn = document.getElementById('pdfDownloadBtn');
-
         function openPdfModal(title, url, downloadName) {
             pdfModalTitle.textContent = title;
             pdfModalIframe.src = url;
@@ -2881,15 +2939,20 @@
             pdfModalIframe.src = '';
         }
 
-        // Close PDF modal with ESC key
+        // Consolidated keydown handler for all keyboard interactions
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && pdfModal.classList.contains('active')) {
-                closePdfModal();
+            // Close modals with ESC key (check PDF modal first, then media modal)
+            if (e.key === 'Escape') {
+                if (pdfModal.classList.contains('active')) {
+                    closePdfModal();
+                } else if (mediaModal.classList.contains('active')) {
+                    closeMediaModal();
+                }
             }
         });
 
         // Prevent PDF modal content clicks from closing modal
-        document.querySelectorAll('.modal-content')[1].addEventListener('click', (e) => {
+        document.getElementById('pdfModalContent').addEventListener('click', (e) => {
             e.stopPropagation();
         });
     </script>
