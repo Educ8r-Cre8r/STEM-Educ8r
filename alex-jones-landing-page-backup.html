@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Jones, M.Ed. | STEM Education Leader</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Red+Hat+Display:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy-deep: #0a1628;
+            --navy-mid: #1a2942;
+            --navy-light: #2d4263;
+            --cyan-bright: #00d9ff;
+            --cyan-soft: #4de8ff;
+            --coral: #ff6b6b;
+            --cream: #fef9f3;
+            --gray-light: #e8eef5;
+            --gray-mid: #8b9cb5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Red Hat Display', sans-serif;
+            background: var(--navy-deep);
+            color: var(--cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated background grid */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 217, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 217, 255, 0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 4rem 0;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-left {
+            position: relative;
+        }
+
+        .photo-container {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+            aspect-ratio: 3/4;
+            margin: 0 auto;
+        }
+
+        .photo-frame {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--cyan-bright);
+            border-radius: 2px;
+            transform: rotate(-2deg);
+            transition: transform 0.4s ease;
+        }
+
+        .photo-container:hover .photo-frame {
+            transform: rotate(0deg);
+        }
+
+        .photo-placeholder {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--gray-mid);
+            text-align: center;
+            padding: 2rem;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .photo-placeholder::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: linear-gradient(45deg, transparent 30%, rgba(0, 217, 255, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+
+        .photo-image {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .photo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%); }
+            100% { transform: translateX(100%) translateY(100%); }
+        }
+
+        .hero-right {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .eyebrow {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--cyan-bright);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cyan-soft) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title-suffix {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            color: var(--gray-mid);
+            font-style: italic;
+        }
+
+        .hero-tagline {
+            font-size: 1.3rem;
+            color: var(--gray-light);
+            margin: 1.5rem 0 2rem;
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        .stat {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .stat:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .stat:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .stat-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: var(--cyan-bright);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray-mid);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* About Section */
+        .about {
+            padding: 8rem 0;
+            background: linear-gradient(180deg, var(--navy-deep) 0%, var(--navy-mid) 100%);
+            position: relative;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--cyan-bright), transparent);
+        }
+
+        .section-header {
+            max-width: 800px;
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+            color: var(--cream);
+        }
+
+        .section-intro {
+            font-size: 1.2rem;
+            color: var(--gray-light);
+            line-height: 1.8;
+        }
+
+        .competencies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .competency-card {
+            background: rgba(26, 41, 66, 0.6);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            padding: 2rem;
+            border-radius: 4px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .competency-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--cyan-bright), var(--coral));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .competency-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .competency-card:hover {
+            border-color: var(--cyan-bright);
+            transform: translateY(-5px);
+            background: rgba(26, 41, 66, 0.9);
+        }
+
+        .competency-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--cyan-soft);
+            margin-bottom: 1rem;
+        }
+
+        .competency-list {
+            list-style: none;
+        }
+
+        .competency-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--gray-light);
+            font-size: 0.95rem;
+        }
+
+        .competency-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--cyan-bright);
+            font-weight: bold;
+        }
+
+        /* Experience Section */
+        .experience {
+            padding: 8rem 0;
+            background: var(--navy-deep);
+        }
+
+        .timeline {
+            position: relative;
+            margin-top: 4rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--cyan-bright), var(--coral));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 4rem;
+            margin-bottom: 4rem;
+            opacity: 0;
+            animation: slideInLeft 0.6s ease forwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: -6px;
+            top: 8px;
+            width: 14px;
+            height: 14px;
+            background: var(--cyan-bright);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--navy-deep), 0 0 0 6px var(--cyan-bright);
+        }
+
+        .timeline-content {
+            background: rgba(26, 41, 66, 0.4);
+            border-left: 3px solid var(--cyan-bright);
+            padding: 2rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            background: rgba(26, 41, 66, 0.7);
+            transform: translateX(10px);
+        }
+
+        .job-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--cream);
+            margin-bottom: 0.5rem;
+        }
+
+        .job-meta {
+            font-size: 0.95rem;
+            color: var(--cyan-soft);
+            margin-bottom: 1.5rem;
+        }
+
+        .job-highlights {
+            list-style: none;
+        }
+
+        .job-highlights li {
+            padding: 0.6rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--gray-light);
+            line-height: 1.6;
+        }
+
+        .job-highlights li::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            color: var(--coral);
+        }
+
+        /* Certifications Section */
+        .certifications {
+            padding: 8rem 0;
+            background: var(--navy-deep);
+            position: relative;
+        }
+
+        .certifications::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--cyan-bright), transparent);
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .cert-card {
+            background: rgba(26, 41, 66, 0.4);
+            border: 2px solid var(--navy-light);
+            padding: 3rem 2.5rem;
+            border-radius: 8px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--cyan-bright), var(--coral));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .cert-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .cert-card:hover {
+            border-color: var(--cyan-bright);
+            transform: translateY(-5px);
+            background: rgba(26, 41, 66, 0.7);
+        }
+
+        .cert-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        .state-icon {
+            width: 80px;
+            height: 80px;
+            flex-shrink: 0;
+        }
+
+        .state-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: var(--cyan-bright);
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .cert-card:hover .state-icon svg {
+            fill: var(--cyan-soft);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .cert-state-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: var(--cream);
+            line-height: 1.2;
+        }
+
+        .cert-list {
+            list-style: none;
+        }
+
+        .cert-list li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--gray-light);
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .cert-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--cyan-bright);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .cert-category {
+            font-weight: 600;
+            color: var(--cyan-soft);
+        }
+
+        /* Achievements Section */
+        .achievements {
+            padding: 8rem 0;
+            background: linear-gradient(180deg, var(--navy-deep) 0%, var(--navy-mid) 100%);
+            position: relative;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .achievement-card {
+            background: rgba(10, 22, 40, 0.6);
+            border: 2px solid var(--navy-light);
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(0, 217, 255, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .achievement-card:hover::after {
+            opacity: 1;
+        }
+
+        .achievement-card:hover {
+            border-color: var(--cyan-bright);
+            transform: scale(1.05);
+        }
+
+        .achievement-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .achievement-value {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.2rem;
+            color: var(--cyan-bright);
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-label {
+            color: var(--gray-light);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 8rem 0;
+            background: var(--navy-deep);
+        }
+
+        .contact-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-intro h2 {
+            margin-bottom: 1rem;
+        }
+
+        .contact-intro p {
+            font-size: 1.1rem;
+            color: var(--gray-light);
+        }
+
+        .contact-form {
+            background: rgba(26, 41, 66, 0.4);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            padding: 3rem;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: var(--cyan-soft);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(10, 22, 40, 0.6);
+            border: 2px solid var(--navy-light);
+            border-radius: 4px;
+            color: var(--cream);
+            font-family: 'Red Hat Display', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--cyan-bright);
+            background: rgba(10, 22, 40, 0.9);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem 2rem;
+            background: linear-gradient(135deg, var(--cyan-bright) 0%, var(--coral) 100%);
+            border: none;
+            border-radius: 4px;
+            color: var(--navy-deep);
+            font-family: 'Red Hat Display', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--coral) 0%, var(--cyan-bright) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .submit-btn:hover::before {
+            opacity: 1;
+        }
+
+        .submit-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
+        }
+
+        /* CV Download Button */
+        .cv-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            background: rgba(26, 41, 66, 0.6);
+            border: 2px solid var(--cyan-bright);
+            border-radius: 4px;
+            color: var(--cyan-bright);
+            font-family: 'Red Hat Display', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .cv-download:hover {
+            background: var(--cyan-bright);
+            color: var(--navy-deep);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 217, 255, 0.4);
+        }
+
+        .cv-download svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .cv-download:hover svg {
+            transform: translateY(2px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            background: var(--navy-mid);
+            text-align: center;
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        footer p {
+            color: var(--gray-mid);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-left {
+                order: 2;
+            }
+
+            .hero-right {
+                order: 1;
+            }
+
+            .photo-container {
+                max-width: 350px;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            h1 {
+                font-size: clamp(2.5rem, 8vw, 4rem);
+            }
+
+            .competencies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .achievements-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .timeline::before {
+                left: 10px;
+            }
+
+            .timeline-item {
+                padding-left: 3rem;
+            }
+
+            .timeline-marker {
+                left: 4px;
+            }
+        }
+
+        /* Scroll reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-left">
+                    <div class="photo-container">
+                        <div class="photo-frame"></div>
+                        <div class="photo-image">
+                            <img src="alex-jones-photo.jpg" alt="Alex Jones, M.Ed. - STEM Education Leader">
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-right">
+                    <span class="eyebrow">STEM Education Leader</span>
+                    <h1>Alex Jones, M.Ed.</h1>
+                    <p class="hero-tagline">
+                        Strategic leader transforming STEM education through innovative programs, data-driven initiatives, and equity-focused partnerships across school, district, and state levels.
+                    </p>
+                    <a href="Alex Jones CV 07112025.pdf" download class="cv-download">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        Download CV
+                    </a>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">20</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">$700K+</span>
+                            <span class="stat-label">Grants Managed</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">1,000+</span>
+                            <span class="stat-label">Educators Reached</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Expertise & Vision</h2>
+                <p class="section-intro">
+                    Nearly two decades of experience developing high-impact STEM initiatives, cultivating strategic partnerships, and driving measurable improvements in educational outcomes while championing equity and access in underserved communities.
+                </p>
+            </div>
+            <div class="competencies-grid">
+                <div class="competency-card reveal">
+                    <h3 class="competency-title">Strategic Planning & Program Management</h3>
+                    <ul class="competency-list">
+                        <li>STEM Initiative Development & Implementation</li>
+                        <li>Grant Management & Budget Oversight</li>
+                        <li>Cross-Functional Team Leadership</li>
+                        <li>Performance Monitoring & Data-Driven Decision Making</li>
+                    </ul>
+                </div>
+                <div class="competency-card reveal">
+                    <h3 class="competency-title">Partnership Development & Stakeholder Management</h3>
+                    <ul class="competency-list">
+                        <li>External Partner Cultivation & Relationship Management</li>
+                        <li>Multi-Stakeholder Communication & Coordination</li>
+                        <li>Community Engagement & Outreach</li>
+                        <li>Executive-Level Presentation & Briefing</li>
+                    </ul>
+                </div>
+                <div class="competency-card reveal">
+                    <h3 class="competency-title">STEM Education Expertise</h3>
+                    <ul class="competency-list">
+                        <li>K-6 Science & STEM Curriculum Development</li>
+                        <li>Professional Development Design & Facilitation</li>
+                        <li>Educational Technology Integration</li>
+                        <li>Culturally Responsive Pedagogy & Equity Initiatives</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="certifications">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Certifications in Texas and Arkansas</h2>
+                <p class="section-intro">
+                    Licensed educator and administrator across multiple states with comprehensive credentials in elementary education, ESL, and educational leadership.
+                </p>
+            </div>
+            <div class="cert-grid">
+                <div class="cert-card reveal">
+                    <div class="cert-header">
+                        <div class="state-icon">
+                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M180,40 L190,35 L195,45 L185,50 L180,60 L175,55 L170,65 L165,60 L160,70 L155,65 L150,75 L145,70 L140,80 L135,75 L130,85 L125,80 L120,90 L115,85 L110,95 L105,90 L100,100 L95,95 L90,105 L85,100 L80,110 L75,105 L70,115 L65,110 L60,120 L55,115 L50,125 L45,120 L40,130 L35,125 L30,135 L25,130 L20,140 L15,135 L10,145 L15,150 L20,155 L25,160 L30,165 L35,170 L40,175 L45,180 L50,185 L55,190 L65,185 L75,180 L85,175 L95,170 L105,165 L115,160 L125,155 L135,150 L145,145 L155,140 L165,135 L175,130 L185,125 L190,120 L195,110 L190,100 L185,90 L180,80 L175,70 L170,60 L165,50 L160,45 L155,40 L150,35 L145,30 L140,25 L135,20 L130,25 L125,30 L120,35 L115,40 L110,45 L105,50 L100,55 L95,60 L90,65 L85,70 L80,75 L75,80 L70,85 L65,90 L60,95 L55,100 L50,105 L45,110 L40,115 L35,120 L30,125 L25,130 L30,135 L35,140 L40,145 L45,150 L50,155 L55,160 L60,165 L65,170 L70,175 L80,170 L90,165 L100,160 L110,155 L120,150 L130,145 L140,140 L150,135 L160,130 L170,125 L180,120 L185,110 L180,100 L175,90 L170,80 L165,70 L160,60 L155,50 L150,45 Z"/>
+                            </svg>
+                        </div>
+                        <h3 class="cert-state-name">Arkansas</h3>
+                    </div>
+                    <ul class="cert-list">
+                        <li><span class="cert-category">Elementary Education:</span> PreK-6 Generalist</li>
+                        <li><span class="cert-category">ESL Certification:</span> K-12</li>
+                        <li><span class="cert-category">Administration:</span> Building Level Admin (PreK-12)</li>
+                    </ul>
+                </div>
+
+                <div class="cert-card reveal">
+                    <div class="cert-header">
+                        <div class="state-icon">
+                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M100,20 L105,25 L110,30 L115,35 L120,40 L125,50 L130,60 L135,70 L140,80 L145,90 L150,100 L155,110 L160,120 L165,130 L170,140 L175,150 L180,160 L180,170 L175,175 L170,180 L165,185 L160,188 L150,190 L140,188 L130,185 L120,182 L110,180 L100,178 L90,180 L80,182 L70,185 L60,188 L50,190 L40,188 L35,185 L30,180 L25,175 L20,170 L20,160 L25,150 L30,140 L35,130 L40,120 L45,110 L50,100 L55,90 L60,80 L65,70 L70,60 L75,50 L80,40 L85,35 L90,30 L95,25 Z M95,60 L90,65 L85,70 L80,75 L75,80 L70,90 L65,100 L60,110 L55,120 L50,130 L50,140 L55,145 L60,150 L70,155 L80,158 L90,160 L100,158 L110,155 L120,150 L125,145 L130,140 L130,130 L125,120 L120,110 L115,100 L110,90 L105,80 L100,75 L95,70 Z"/>
+                            </svg>
+                        </div>
+                        <h3 class="cert-state-name">Texas</h3>
+                    </div>
+                    <ul class="cert-list">
+                        <li><span class="cert-category">Elementary Education:</span> EC-6 Generalist</li>
+                        <li><span class="cert-category">ESL Certification:</span> EC-6 ESL</li>
+                        <li><span class="cert-category">Administration:</span> Principal (EC-12)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Professional Journey</h2>
+                <p class="section-intro">
+                    A career dedicated to advancing STEM education through innovative program design, strategic leadership, and meaningful partnerships at every level of the education system.
+                </p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="job-title">STEM Lab Teacher</h3>
+                        <p class="job-meta">Marion School District, Arkansas | July 2024 - Present</p>
+                        <ul class="job-highlights">
+                            <li>Develop and implement comprehensive STEM curriculum reaching 650+ K-6 students weekly</li>
+                            <li>Lead collaborative partnerships with classroom teachers to integrate STEM concepts across core instruction</li>
+                            <li>Design technology-enriched learning experiences promoting critical thinking and 21st-century skills</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="job-title">Science Content Specialist</h3>
+                        <p class="job-meta">Massachusetts Department of Elementary and Secondary Education | Jan 2022 - July 2023</p>
+                        <ul class="job-highlights">
+                            <li>Managed $700,000 Elementary OpenSciEd grant program across 10+ districts</li>
+                            <li>Partnered with U.S. Department of Education Green Ribbon Schools Program for national school recognition</li>
+                            <li>Served on Presidential Awards for Excellence in Mathematics and Science Teaching (PAEMST) committee for NSF</li>
+                            <li>Led Science, Technology, and Engineering portion of CURATE initiative</li>
+                            <li>Designed and facilitated professional development reaching 1,000+ educators statewide</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="job-title">Science/STEM Lab Teacher</h3>
+                        <p class="job-meta">Houston ISD, Texas | Aug 2014 - Sept 2021</p>
+                        <ul class="job-highlights">
+                            <li>Designed and implemented district-aligned science curriculum for 650+ K-5 students</li>
+                            <li>Secured and managed $7,000 Houston ISD Foundation Innovation Grant</li>
+                            <li>Developed and led professional development on inquiry-based science instruction</li>
+                            <li>Supported school improvement initiatives through systematic data analysis</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="job-title">Educational Technology & Special Projects Leadership</h3>
+                        <p class="job-meta">Pearland ISD, Fort Bend ISD, Region 4 ESC | 2010 - 2014</p>
+                        <ul class="job-highlights">
+                            <li>Served on iAchieve Leadership Team overseeing $16M district-wide technology initiative</li>
+                            <li>Coordinated technology integration initiatives across multiple K-4 elementary campuses</li>
+                            <li>Developed eLearning curricula and professional development courses for educators</li>
+                            <li>Led communication between 70+ content writers, teachers, administrators, and parents</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="achievements">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Impact & Recognition</h2>
+                <p class="section-intro">
+                    Measurable outcomes that demonstrate commitment to excellence, innovation, and educational equity.
+                </p>
+            </div>
+            <div class="achievements-grid">
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">💰</div>
+                    <div class="achievement-value">$824K+</div>
+                    <div class="achievement-label">Total Grant Funding Secured & Managed</div>
+                </div>
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">🎓</div>
+                    <div class="achievement-value">1,300+</div>
+                    <div class="achievement-label">Students Impacted Weekly</div>
+                </div>
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">👥</div>
+                    <div class="achievement-value">1,000+</div>
+                    <div class="achievement-label">Educators Trained</div>
+                </div>
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">🏫</div>
+                    <div class="achievement-value">10+</div>
+                    <div class="achievement-label">Districts Supported</div>
+                </div>
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">🏆</div>
+                    <div class="achievement-value">NSF</div>
+                    <div class="achievement-label">PAEMST Committee Member</div>
+                </div>
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">📚</div>
+                    <div class="achievement-value">Published</div>
+                    <div class="achievement-label">Science and Children Journal</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-intro reveal">
+                    <h2>Let's Connect</h2>
+                    <p>Interested in collaboration, consulting, or discussing innovative STEM education initiatives? I'd love to hear from you.</p>
+                </div>
+                <form class="contact-form reveal" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <span>Send Message</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Alex Jones, M.Ed. | Available for relocation to Houston, TX area</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal animation
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form data
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            // Here you would typically send the data to your backend
+            // For now, we'll just show an alert
+            alert('Thank you for your message! This is a demo form. In a live version, this would send your message to Alex.');
+
+            // Reset form
+            this.reset();
+        });
+
+        // Smooth scroll for anchor links (if you add navigation later)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

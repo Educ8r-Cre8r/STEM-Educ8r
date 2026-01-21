@@ -1,0 +1,2833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Jones, M.Ed. | STEM Education Leader</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Red+Hat+Display:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy-deep: #0a1628;
+            --navy-mid: #1a2942;
+            --navy-light: #2d4263;
+            --cyan-bright: #00d9ff;
+            --cyan-soft: #4de8ff;
+            --coral: #ff6b6b;
+            --cream: #fef9f3;
+            --gray-light: #e8eef5;
+            --gray-mid: #8b9cb5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Red Hat Display', sans-serif;
+            background: var(--navy-deep);
+            color: var(--cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 80px; /* Space for fixed nav */
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Sticky Navigation */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+            z-index: 1000;
+            padding: 1rem 0;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .main-nav.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: var(--cyan-bright);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--cyan-bright);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--cyan-bright);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--cyan-bright);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--cyan-bright) 0%, var(--coral) 100%);
+            border: none;
+            border-radius: 50%;
+            color: var(--navy-deep);
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(0, 217, 255, 0.3);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 217, 255, 0.5);
+        }
+
+        /* Animated background grid */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 217, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 217, 255, 0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 4rem 0;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-left {
+            position: relative;
+        }
+
+        .photo-container {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+            aspect-ratio: 3/4;
+            margin: 0 auto;
+        }
+
+        .photo-frame {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--cyan-bright);
+            border-radius: 2px;
+            transform: rotate(-2deg);
+            transition: transform 0.4s ease;
+        }
+
+        .photo-container:hover .photo-frame {
+            transform: rotate(0deg);
+        }
+
+        .photo-placeholder {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--gray-mid);
+            text-align: center;
+            padding: 2rem;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .photo-placeholder::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: linear-gradient(45deg, transparent 30%, rgba(0, 217, 255, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+
+        .photo-image {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .photo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%); }
+            100% { transform: translateX(100%) translateY(100%); }
+        }
+
+        .hero-right {
+            /* Container - no animation */
+        }
+
+        /* Staggered hero animations */
+        .eyebrow,
+        .hero-right h1,
+        .hero-tagline,
+        .hero-buttons,
+        .hero-stats {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .eyebrow {
+            animation-delay: 0.2s;
+        }
+
+        .hero-right h1 {
+            animation-delay: 0.4s;
+        }
+
+        .hero-tagline {
+            animation-delay: 0.6s;
+        }
+
+        .hero-buttons {
+            animation-delay: 0.8s;
+        }
+
+        .hero-stats {
+            animation-delay: 1s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .eyebrow {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--cyan-bright);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cyan-soft) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title-suffix {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            color: var(--gray-mid);
+            font-style: italic;
+        }
+
+        .hero-tagline {
+            font-size: 1.3rem;
+            color: var(--gray-light);
+            margin: 1.5rem 0 2rem;
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        .stat {
+            animation: floatGlow 3s ease-in-out infinite;
+            transition: transform 0.3s ease;
+        }
+
+        .stat:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .stat:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes floatGlow {
+            0%, 100% {
+                transform: translateY(0);
+                filter: drop-shadow(0 0 0px var(--cyan-bright));
+            }
+            50% {
+                transform: translateY(-10px);
+                filter: drop-shadow(0 0 20px rgba(0, 217, 255, 0.6));
+            }
+        }
+
+        .stat-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: var(--cyan-bright);
+            display: block;
+            margin-bottom: 0.3rem;
+            text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray-mid);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Value Proposition Banner */
+        .value-banner {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(255, 107, 107, 0.1) 100%);
+            border-top: 2px solid var(--cyan-bright);
+            border-bottom: 2px solid var(--coral);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .value-banner h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--cream);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .value-banner p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--cyan-soft);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Why Me Section */
+        .why-me {
+            padding: 8rem 0;
+            background: var(--navy-deep);
+            position: relative;
+        }
+
+        .why-me::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--cyan-bright), transparent);
+        }
+
+        .why-me-content {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .why-me-image {
+            position: relative;
+        }
+
+        .why-me-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 3px solid var(--cyan-bright);
+            box-shadow: 0 20px 40px rgba(0, 217, 255, 0.2);
+        }
+
+        .why-me-text h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: var(--cyan-bright);
+            margin-bottom: 1.5rem;
+        }
+
+        .why-me-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--gray-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .why-me-highlights {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .why-me-highlights li {
+            padding: 1rem 0;
+            padding-left: 2.5rem;
+            position: relative;
+            color: var(--gray-light);
+            font-size: 1.05rem;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+        }
+
+        .why-me-highlights li:last-child {
+            border-bottom: none;
+        }
+
+        .why-me-highlights li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--cyan-bright);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        @media (max-width: 968px) {
+            .why-me-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        /* About Section */
+        .about {
+            padding: 8rem 0;
+            background: linear-gradient(180deg, var(--navy-deep) 0%, var(--navy-mid) 100%);
+            position: relative;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--cyan-bright), transparent);
+        }
+
+        .section-header {
+            max-width: 800px;
+            margin-bottom: 4rem;
+        }
+
+        .section-header-with-button {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .section-header-with-button .section-header {
+            margin-bottom: 0;
+            flex: 1;
+        }
+
+        .cv-download-side {
+            flex-shrink: 0;
+            align-self: center;
+        }
+
+        h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+            color: var(--cream);
+        }
+
+        .section-intro {
+            font-size: 1.2rem;
+            color: var(--gray-light);
+            line-height: 1.8;
+        }
+
+        .competencies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .competency-card {
+            background: rgba(26, 41, 66, 0.6);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            padding: 2rem;
+            border-radius: 4px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .competency-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--cyan-bright), var(--coral));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .competency-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .competency-card:hover {
+            border-color: var(--cyan-bright);
+            transform: translateY(-5px);
+            background: rgba(26, 41, 66, 0.9);
+        }
+
+        .competency-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--cyan-soft);
+            margin-bottom: 1rem;
+        }
+
+        .competency-list {
+            list-style: none;
+        }
+
+        .competency-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--gray-light);
+            font-size: 0.95rem;
+        }
+
+        .competency-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--cyan-bright);
+            font-weight: bold;
+        }
+
+        /* Experience Section */
+        .experience {
+            padding: 8rem 0;
+            background: var(--navy-deep);
+        }
+
+        .timeline {
+            position: relative;
+            margin-top: 4rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--cyan-bright), var(--coral));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 4rem;
+            margin-bottom: 4rem;
+            opacity: 0;
+            animation: slideInLeft 0.6s ease forwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: -6px;
+            top: 8px;
+            width: 14px;
+            height: 14px;
+            background: var(--cyan-bright);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--navy-deep), 0 0 0 6px var(--cyan-bright);
+        }
+
+        .timeline-content {
+            background: rgba(26, 41, 66, 0.4);
+            border-left: 3px solid var(--cyan-bright);
+            padding: 2rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            background: rgba(26, 41, 66, 0.7);
+            transform: translateX(10px);
+        }
+
+        .job-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--cream);
+            margin-bottom: 0.5rem;
+        }
+
+        .job-meta {
+            font-size: 0.95rem;
+            color: var(--cyan-soft);
+            margin-bottom: 1.5rem;
+        }
+
+        .job-highlights {
+            list-style: none;
+        }
+
+        .job-highlights li {
+            padding: 0.6rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--gray-light);
+            line-height: 1.6;
+        }
+
+        .job-highlights li::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            color: var(--coral);
+        }
+
+        /* Certifications Section */
+        .certifications {
+            padding: 8rem 0;
+            background: var(--navy-deep);
+            position: relative;
+        }
+
+        .certifications::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--cyan-bright), transparent);
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .cert-card {
+            background: rgba(26, 41, 66, 0.4);
+            border: 2px solid var(--navy-light);
+            padding: 3rem 2.5rem;
+            border-radius: 8px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--cyan-bright), var(--coral));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .cert-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .cert-card:hover {
+            border-color: var(--cyan-bright);
+            transform: translateY(-5px);
+            background: rgba(26, 41, 66, 0.7);
+        }
+
+        .cert-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        .state-icon {
+            width: 120px;
+            height: 120px;
+            flex-shrink: 0;
+        }
+
+        .state-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: all 0.3s ease;
+            filter: brightness(1.1);
+        }
+
+        .cert-card:hover .state-icon img {
+            transform: scale(1.1);
+            filter: brightness(1.2);
+        }
+
+        .cert-state-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: var(--cream);
+            line-height: 1.2;
+        }
+
+        .cert-list {
+            list-style: none;
+        }
+
+        .cert-list li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--gray-light);
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .cert-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--cyan-bright);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .cert-category {
+            font-weight: 600;
+            color: var(--cyan-soft);
+        }
+
+        /* Awards & Recognition Section */
+        .awards {
+            padding: 8rem 0;
+            background: var(--navy-deep);
+            position: relative;
+        }
+
+        .awards::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--coral), transparent);
+        }
+
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .award-card {
+            background: rgba(26, 41, 66, 0.4);
+            border: 2px solid var(--navy-light);
+            padding: 2.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .award-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--coral), var(--cyan-bright));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .award-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .award-card:hover {
+            border-color: var(--coral);
+            transform: translateY(-10px);
+            background: rgba(26, 41, 66, 0.8);
+            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.3);
+        }
+
+        .award-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .award-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem;
+            color: var(--coral);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .award-description {
+            color: var(--gray-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .award-year {
+            margin-top: 1rem;
+            font-weight: 600;
+            color: var(--cyan-soft);
+            font-size: 0.9rem;
+        }
+
+        /* Featured In Section */
+        .featured-in {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.05) 0%, rgba(0, 217, 255, 0.05) 100%);
+            border-top: 1px solid rgba(255, 107, 107, 0.2);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        .featured-in h3 {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--gray-mid);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+        }
+
+        .media-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .media-logo {
+            text-align: center;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .media-logo-link {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .media-logo-link:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .media-logo-link p {
+            transition: color 0.3s ease;
+        }
+
+        .media-logo-link:hover p {
+            color: var(--cyan-bright);
+        }
+
+        .media-logo:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .media-logo img {
+            height: 60px;
+            width: auto;
+            filter: grayscale(30%) brightness(1.2);
+            transition: filter 0.3s ease;
+        }
+
+        .media-logo:hover img {
+            filter: grayscale(0%) brightness(1.3);
+        }
+
+        .media-logo p {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--gray-mid);
+        }
+
+        .media-logo-button {
+            background: none;
+            border: none;
+            padding: 0;
+            font-family: inherit;
+        }
+
+        /* Media Modal */
+        .media-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .media-modal.active {
+            display: flex;
+        }
+
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            height: 85vh;
+            background: var(--navy-mid);
+            border: 2px solid var(--cyan-bright);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 60px rgba(0, 217, 255, 0.3);
+            animation: modalSlideIn 0.4s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 107, 107, 0.2);
+            border: 2px solid var(--coral);
+            border-radius: 50%;
+            color: var(--coral);
+            font-size: 2rem;
+            line-height: 1;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .modal-close:hover {
+            background: var(--coral);
+            color: var(--navy-deep);
+            transform: rotate(90deg);
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 217, 255, 0.2);
+            border: 2px solid var(--cyan-bright);
+            border-radius: 50%;
+            color: var(--cyan-bright);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .modal-nav:hover {
+            background: var(--cyan-bright);
+            color: var(--navy-deep);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .modal-prev {
+            left: 1rem;
+        }
+
+        .modal-next {
+            right: 1rem;
+        }
+
+        .modal-header {
+            padding: 2rem 5rem;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+            text-align: center;
+        }
+
+        .modal-header h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            color: var(--cyan-bright);
+            margin: 0;
+        }
+
+        .modal-body {
+            flex: 1;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .modal-body iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .modal-footer {
+            padding: 1rem;
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
+            display: flex;
+            justify-content: center;
+        }
+
+        .modal-dots {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .modal-dots .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--navy-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-dots .dot.active {
+            background: var(--cyan-bright);
+            transform: scale(1.3);
+        }
+
+        @media (max-width: 968px) {
+            .modal-content {
+                width: 95%;
+                height: 90vh;
+            }
+
+            .modal-header {
+                padding: 1.5rem 3rem;
+            }
+
+            .modal-header h3 {
+                font-size: 1.3rem;
+            }
+
+            .modal-body {
+                padding: 1rem;
+            }
+
+            .modal-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+
+            .modal-prev {
+                left: 0.5rem;
+            }
+
+            .modal-next {
+                right: 0.5rem;
+            }
+
+            .modal-close {
+                width: 35px;
+                height: 35px;
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Credibility Documentation Section */
+        .credibility-docs {
+            padding: 8rem 0;
+            background: var(--navy-deep);
+            position: relative;
+        }
+
+        .credibility-docs::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--cyan-bright), transparent);
+        }
+
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .doc-card {
+            background: rgba(26, 41, 66, 0.4);
+            border: 2px solid var(--navy-light);
+            padding: 3rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .doc-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--cyan-bright), var(--coral));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .doc-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .doc-card:hover {
+            border-color: var(--cyan-bright);
+            transform: translateY(-10px);
+            background: rgba(26, 41, 66, 0.8);
+            box-shadow: 0 20px 40px rgba(0, 217, 255, 0.3);
+        }
+
+        .doc-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .doc-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: var(--cyan-bright);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .doc-description {
+            color: var(--gray-light);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .doc-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--cyan-bright) 0%, var(--coral) 100%);
+            border: none;
+            border-radius: 4px;
+            color: var(--navy-deep);
+            font-family: 'Red Hat Display', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+
+        .doc-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.4);
+        }
+
+        .doc-download svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .doc-download:hover svg {
+            transform: translateY(2px);
+        }
+
+        /* Testimonial Carousel */
+        .testimonial-carousel {
+            position: relative;
+            max-width: 1200px;
+            margin: 4rem auto 0;
+        }
+
+        .carousel-container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--cyan-bright);
+            background: rgba(26, 41, 66, 0.6);
+            color: var(--cyan-bright);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn:hover {
+            background: var(--cyan-bright);
+            color: var(--navy-deep);
+            transform: scale(1.1);
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--navy-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--cyan-bright);
+            transform: scale(1.3);
+        }
+
+        @media (max-width: 968px) {
+            .carousel-slide {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .awards-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .media-logos {
+                gap: 2rem;
+            }
+        }
+
+        /* Achievements Section */
+        .achievements {
+            padding: 8rem 0;
+            background: linear-gradient(180deg, var(--navy-deep) 0%, var(--navy-mid) 100%);
+            position: relative;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .achievement-card {
+            background: rgba(10, 22, 40, 0.6);
+            border: 2px solid var(--navy-light);
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(0, 217, 255, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .achievement-card:hover::after {
+            opacity: 1;
+        }
+
+        .achievement-card:hover {
+            border-color: var(--cyan-bright);
+            transform: scale(1.05);
+        }
+
+        .achievement-card-link {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .achievement-card-link:hover {
+            border-color: var(--coral);
+        }
+
+        .achievement-card-link .achievement-value {
+            color: var(--coral);
+        }
+
+        .achievement-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .achievement-value {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.2rem;
+            color: var(--cyan-bright);
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-label {
+            color: var(--gray-light);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Testimonial Section */
+        .testimonial {
+            padding: 8rem 0;
+            background: var(--navy-deep);
+        }
+
+        .testimonial-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-intro {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .testimonial-intro h2 {
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-intro p {
+            font-size: 1.1rem;
+            color: var(--gray-light);
+        }
+
+        .testimonial-content {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .testimonial-image-container {
+            position: relative;
+        }
+
+        .testimonial-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 3px solid var(--cyan-bright);
+            transition: all 0.4s ease;
+            filter: grayscale(20%);
+        }
+
+        .testimonial-image:hover {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+            box-shadow: 0 20px 40px rgba(0, 217, 255, 0.3);
+        }
+
+        .testimonial-quote {
+            background: rgba(26, 41, 66, 0.4);
+            border-left: 4px solid var(--coral);
+            padding: 3rem;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .testimonial-quote::before {
+            content: '"';
+            font-family: 'DM Serif Display', serif;
+            font-size: 6rem;
+            color: var(--cyan-bright);
+            opacity: 0.2;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--gray-light);
+            font-style: italic;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            font-size: 1.1rem;
+            color: var(--cyan-soft);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .testimonial-role {
+            font-size: 0.95rem;
+            color: var(--gray-mid);
+        }
+
+        @media (max-width: 968px) {
+            .testimonial-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .testimonial-image-container {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: var(--cyan-soft);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(10, 22, 40, 0.6);
+            border: 2px solid var(--navy-light);
+            border-radius: 4px;
+            color: var(--cream);
+            font-family: 'Red Hat Display', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--cyan-bright);
+            background: rgba(10, 22, 40, 0.9);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem 2rem;
+            background: linear-gradient(135deg, var(--cyan-bright) 0%, var(--coral) 100%);
+            border: none;
+            border-radius: 4px;
+            color: var(--navy-deep);
+            font-family: 'Red Hat Display', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--coral) 0%, var(--cyan-bright) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .submit-btn:hover::before {
+            opacity: 1;
+        }
+
+        .submit-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
+        }
+
+        /* Signature Image */
+        .signature-container {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem 0;
+        }
+
+        .signature-image {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            opacity: 0;
+            animation: signatureFade 2s ease forwards;
+            animation-delay: 0.5s;
+            filter: drop-shadow(0 4px 10px rgba(255, 107, 107, 0.3));
+        }
+
+        @keyframes signatureFade {
+            0% {
+                opacity: 0;
+                transform: translateY(20px) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Hero Buttons Container */
+        .hero-buttons {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        /* CV Download Button */
+        .cv-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            background: rgba(26, 41, 66, 0.6);
+            border: 2px solid var(--cyan-bright);
+            border-radius: 4px;
+            color: var(--cyan-bright);
+            font-family: 'Red Hat Display', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+
+        .cv-download:hover {
+            background: var(--cyan-bright);
+            color: var(--navy-deep);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 217, 255, 0.4);
+        }
+
+        .cv-download svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .cv-download:hover svg {
+            transform: translateY(2px);
+        }
+
+        /* SAIS Logo Link */
+        .sais-logo-link {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .sais-logo {
+            height: 60px;
+            width: auto;
+            filter: brightness(0.9);
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .sais-logo-link:hover .sais-logo {
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 217, 255, 0.3);
+        }
+
+        /* Floating Particles Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--cyan-bright);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: particleFloat 15s infinite ease-in-out;
+        }
+
+        @keyframes particleFloat {
+            0%, 100% {
+                transform: translate(0, 0);
+                opacity: 0.3;
+            }
+            25% {
+                transform: translate(100px, -100px);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translate(-50px, -200px);
+                opacity: 0.3;
+            }
+            75% {
+                transform: translate(80px, -150px);
+                opacity: 0.5;
+            }
+        }
+
+        /* Flip-in animation for cards */
+        @keyframes flipIn {
+            from {
+                opacity: 0;
+                transform: perspective(1000px) rotateY(-90deg);
+            }
+            to {
+                opacity: 1;
+                transform: perspective(1000px) rotateY(0);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: perspective(1000px) rotateY(-90deg);
+            transition: none;
+        }
+
+        .reveal.active {
+            animation: flipIn 0.8s ease forwards;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            background: var(--navy-mid);
+            text-align: center;
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        footer p {
+            color: var(--gray-mid);
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-contact {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-contact a {
+            color: var(--cyan-bright);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact a:hover {
+            color: var(--cyan-soft);
+            text-decoration: underline;
+        }
+
+        .footer-credit {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .claude-logo {
+            height: 24px;
+            width: auto;
+            vertical-align: middle;
+            margin-left: 0.3rem;
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            body {
+                padding-top: 70px;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(10, 22, 40, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                border-bottom: 2px solid var(--cyan-bright);
+            }
+
+            .nav-links.active {
+                transform: translateX(0);
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .section-header-with-button {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2rem;
+            }
+
+            .cv-download-side {
+                align-self: flex-start;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-left {
+                order: 2;
+            }
+
+            .hero-right {
+                order: 1;
+            }
+
+            .photo-container {
+                max-width: 350px;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            h1 {
+                font-size: clamp(2.5rem, 8vw, 4rem);
+            }
+
+            .competencies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .achievements-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .timeline::before {
+                left: 10px;
+            }
+
+            .timeline-item {
+                padding-left: 3rem;
+            }
+
+            .timeline-marker {
+                left: 4px;
+            }
+        }
+
+        /* Scroll reveal animation - removed in favor of flip-in */
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">Alex Jones, M.Ed.</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#why-me">Why Me</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#awards">Awards</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#testimonial">Testimonials</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-left">
+                    <div class="photo-container">
+                        <div class="photo-frame"></div>
+                        <div class="photo-image">
+                            <img src="alex-jones-photo.jpg" alt="Alex Jones, M.Ed. - STEM Education Leader">
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-right">
+                    <span class="eyebrow">STEM Education Leader</span>
+                    <h1>Alex Jones, M.Ed.</h1>
+                    <p class="hero-tagline">
+                        Strategic leader transforming STEM education through innovative programs, data-driven initiatives, and equity-focused partnerships across school, district, and state levels.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">20</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">$700K+</span>
+                            <span class="stat-label">Grants Managed</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">1,000+</span>
+                            <span class="stat-label">Educators Reached</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition Banner -->
+    <section class="value-banner">
+        <div class="container">
+            <h2>Transforming STEM Education Through Strategic Leadership & Equity</h2>
+            <p>20 years advancing educational excellence | $800K+ in grants managed | 1,000+ educators trained | Champion for underserved communities</p>
+        </div>
+    </section>
+
+    <!-- Why Me Section -->
+    <section class="why-me" id="why-me">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Why Choose Me</h2>
+                <p class="section-intro">
+                    My approach combines hands-on classroom experience with strategic program leadership, creating meaningful impact at every level of the education system.
+                </p>
+            </div>
+            <div class="why-me-content reveal">
+                <div class="why-me-image">
+                    <img src="FOX 26 TV interview.jpg" alt="Alex Jones FOX 26 Interview">
+                </div>
+                <div class="why-me-text">
+                    <h3>Educational Philosophy</h3>
+                    <p>
+                        I believe that exceptional STEM education requires more than curriculum—it demands strategic vision, culturally responsive pedagogy, and unwavering commitment to equity. Throughout my career, I've championed educational initiatives that serve underserved communities while building partnerships that drive systemic change.
+                    </p>
+                    <p>
+                        My dual expertise in classroom instruction and large-scale program management positions me to understand both the ground-level realities teachers face and the strategic imperatives that guide educational policy. This unique perspective enables me to design initiatives that are both visionary and practically implementable.
+                    </p>
+                    <ul class="why-me-highlights">
+                        <li><strong>Data-Driven Excellence:</strong> Managed $700K+ programs with comprehensive evaluation protocols and performance metrics</li>
+                        <li><strong>Federal Partnership Experience:</strong> Served on PAEMST committee (NSF) and partnered with U.S. Dept of Education</li>
+                        <li><strong>Equity Champion:</strong> Developed culturally responsive approaches serving underserved communities</li>
+                        <li><strong>Proven Leadership:</strong> Led cross-functional teams managing $16M technology initiatives</li>
+                        <li><strong>Thought Leadership:</strong> Published author, national presenter, recognized education innovator</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="expertise">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Expertise & Vision</h2>
+                <p class="section-intro">
+                    Nearly two decades of experience developing high-impact STEM initiatives, cultivating strategic partnerships, and driving measurable improvements in educational outcomes while championing equity and access in underserved communities.
+                </p>
+            </div>
+            <div class="competencies-grid">
+                <div class="competency-card reveal">
+                    <h3 class="competency-title">Strategic Planning & Program Management</h3>
+                    <ul class="competency-list">
+                        <li>STEM Initiative Development & Implementation</li>
+                        <li>Grant Management & Budget Oversight</li>
+                        <li>Cross-Functional Team Leadership</li>
+                        <li>Performance Monitoring & Data-Driven Decision Making</li>
+                    </ul>
+                </div>
+                <div class="competency-card reveal">
+                    <h3 class="competency-title">Partnership Development & Stakeholder Management</h3>
+                    <ul class="competency-list">
+                        <li>External Partner Cultivation & Relationship Management</li>
+                        <li>Multi-Stakeholder Communication & Coordination</li>
+                        <li>Community Engagement & Outreach</li>
+                        <li>Executive-Level Presentation & Briefing</li>
+                    </ul>
+                </div>
+                <div class="competency-card reveal">
+                    <h3 class="competency-title">STEM Education Expertise</h3>
+                    <ul class="competency-list">
+                        <li>K-6 Science & STEM Curriculum Development</li>
+                        <li>Professional Development Design & Facilitation</li>
+                        <li>Educational Technology Integration</li>
+                        <li>Culturally Responsive Pedagogy & Equity Initiatives</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="certifications" id="certifications">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Certifications in Texas and Arkansas</h2>
+                <p class="section-intro">
+                    Licensed educator and administrator across multiple states with comprehensive credentials in elementary education, ESL, and educational leadership.
+                </p>
+            </div>
+            <div class="cert-grid">
+                <div class="cert-card reveal">
+                    <div class="cert-header">
+                        <div class="state-icon">
+                            <img src="TX.png" alt="Texas">
+                        </div>
+                        <h3 class="cert-state-name">Texas</h3>
+                    </div>
+                    <ul class="cert-list">
+                        <li><span class="cert-category">Elementary Education:</span> EC-6 Generalist</li>
+                        <li><span class="cert-category">ESL Certification:</span> EC-6 ESL</li>
+                        <li><span class="cert-category">Administration:</span> Principal (EC-12)</li>
+                    </ul>
+                </div>
+
+                <div class="cert-card reveal">
+                    <div class="cert-header">
+                        <div class="state-icon">
+                            <img src="AR.png" alt="Arkansas">
+                        </div>
+                        <h3 class="cert-state-name">Arkansas</h3>
+                    </div>
+                    <ul class="cert-list">
+                        <li><span class="cert-category">Elementary Education:</span> PreK-6 Generalist</li>
+                        <li><span class="cert-category">ESL Certification:</span> K-12</li>
+                        <li><span class="cert-category">Administration:</span> Building Level Admin (PreK-12)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards & Recognition Section -->
+    <section class="awards" id="awards">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Awards & Recognition</h2>
+                <p class="section-intro">
+                    Honored for excellence in teaching, innovation, and commitment to student success.
+                </p>
+            </div>
+            <div class="awards-grid">
+                <div class="award-card reveal">
+                    <span class="award-icon">🏆</span>
+                    <h3 class="award-title">HMNS Excellence in Teaching Award</h3>
+                    <p class="award-description">Recognized by Houston Museum of Natural Science for outstanding science instruction</p>
+                    <p class="award-year">2018, 2019</p>
+                </div>
+                <div class="award-card reveal">
+                    <span class="award-icon">🌟</span>
+                    <h3 class="award-title">TCEA Teacher of the Year Finalist</h3>
+                    <p class="award-description">Texas Computer Education Association state finalist for innovative technology integration</p>
+                    <p class="award-year">2017, 2019</p>
+                </div>
+                <div class="award-card reveal">
+                    <span class="award-icon">⭐</span>
+                    <h3 class="award-title">4.00 Highly Effective Rating</h3>
+                    <p class="award-description">Highest performance rating on T-TESS evaluation system</p>
+                    <p class="award-year">2019-2020</p>
+                </div>
+                <div class="award-card reveal">
+                    <span class="award-icon">🔬</span>
+                    <h3 class="award-title">NSF Noyce Fellow</h3>
+                    <p class="award-description">National Science Foundation scholarship recipient for STEM education excellence</p>
+                    <p class="award-year">2008-2010</p>
+                </div>
+                <div class="award-card reveal">
+                    <span class="award-icon">📖</span>
+                    <h3 class="award-title">Published Author</h3>
+                    <p class="award-description">"Science via Photography" in Science and Children (NSTA journal)</p>
+                    <p class="award-year">2018</p>
+                </div>
+                <div class="award-card reveal">
+                    <span class="award-icon">🎓</span>
+                    <h3 class="award-title">ExxonMobil Teachers Academy</h3>
+                    <p class="award-description">Selected for elite professional development program in math and science teaching</p>
+                    <p class="award-year">2015</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured In Section -->
+    <section class="featured-in">
+        <div class="container">
+            <h3>As Featured In</h3>
+            <div class="media-logos">
+                <button onclick="openMediaModal(0)" class="media-logo media-logo-link media-logo-button">
+                    <p>FOX 26 Houston</p>
+                </button>
+                <button onclick="openMediaModal(1)" class="media-logo media-logo-link media-logo-button">
+                    <p>Houston Life (KPRC Channel 2)</p>
+                </button>
+                <button onclick="openMediaModal(2)" class="media-logo media-logo-link media-logo-button">
+                    <p>The Buzz Magazine</p>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media Modal -->
+    <div id="mediaModal" class="media-modal">
+        <div class="modal-overlay" onclick="closeMediaModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeMediaModal()" aria-label="Close modal">&times;</button>
+            <button class="modal-nav modal-prev" onclick="navigateMedia(-1)" aria-label="Previous media">‹</button>
+            <button class="modal-nav modal-next" onclick="navigateMedia(1)" aria-label="Next media">›</button>
+
+            <div class="modal-header">
+                <h3 id="modalTitle"></h3>
+            </div>
+
+            <div class="modal-body">
+                <iframe id="modalIframe" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <div class="modal-footer">
+                <div class="modal-dots" id="modalDots"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Credibility Documentation Section -->
+    <section class="credibility-docs" id="credibility">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Credibility Documentation</h2>
+                <p class="section-intro">
+                    Comprehensive documentation of awards, recommendations, media features, and professional recognition.
+                </p>
+            </div>
+            <div class="docs-grid">
+                <div class="doc-card reveal">
+                    <div class="doc-icon">📄</div>
+                    <h3 class="doc-title">Complete Credibility Portfolio</h3>
+                    <p class="doc-description">Comprehensive documentation including awards, recommendations, media features, and professional recognition.</p>
+                    <a href="Documentation of Credibility, Professionalism, and Character for Alex Jones 12312025.pdf" download class="doc-download">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        Download Portfolio
+                    </a>
+                </div>
+                <div class="doc-card reveal">
+                    <div class="doc-icon">🎓</div>
+                    <h3 class="doc-title">Rice University Recommendation</h3>
+                    <p class="doc-description">Letter of recommendation from Rice University Center for STEM Engagement highlighting teaching excellence.</p>
+                    <a href="Alex Jones HMNS Recomendation04132023.pdf" download class="doc-download">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        Download Letter
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <div class="section-header-with-button reveal">
+                <div class="section-header">
+                    <h2>Professional Journey</h2>
+                    <p class="section-intro">
+                        A career dedicated to advancing STEM education through innovative program design, strategic leadership, and meaningful partnerships at every level of the education system.
+                    </p>
+                </div>
+                <a href="Alex Jones CV 07112025.pdf" download class="cv-download cv-download-side">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    Download CV
+                </a>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="job-title">STEM Lab Teacher</h3>
+                        <p class="job-meta">Marion School District, Arkansas | July 2024 - Present</p>
+                        <ul class="job-highlights">
+                            <li>Develop and implement comprehensive STEM curriculum reaching 650+ K-6 students weekly</li>
+                            <li>Lead collaborative partnerships with classroom teachers to integrate STEM concepts across core instruction</li>
+                            <li>Design technology-enriched learning experiences promoting critical thinking and 21st-century skills</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="job-title">Science Content Specialist</h3>
+                        <p class="job-meta">Massachusetts Department of Elementary and Secondary Education | Jan 2022 - July 2023</p>
+                        <ul class="job-highlights">
+                            <li>Managed $700,000 Elementary OpenSciEd grant program across 10+ districts</li>
+                            <li>Partnered with U.S. Department of Education Green Ribbon Schools Program for national school recognition</li>
+                            <li>Served on Presidential Awards for Excellence in Mathematics and Science Teaching (PAEMST) committee for NSF</li>
+                            <li>Led Science, Technology, and Engineering portion of CURATE initiative</li>
+                            <li>Designed and facilitated professional development reaching 1,000+ educators statewide</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="job-title">Science/STEM Lab Teacher</h3>
+                        <p class="job-meta">Houston ISD, Texas | Aug 2014 - Sept 2021</p>
+                        <ul class="job-highlights">
+                            <li>Designed and implemented district-aligned science curriculum for 650+ K-5 students</li>
+                            <li>Secured and managed $7,000 Houston ISD Foundation Innovation Grant</li>
+                            <li>Developed and led professional development on inquiry-based science instruction</li>
+                            <li>Supported school improvement initiatives through systematic data analysis</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="job-title">Educational Technology & Special Projects Leadership</h3>
+                        <p class="job-meta">Pearland ISD, Fort Bend ISD, Region 4 ESC | 2010 - 2014</p>
+                        <ul class="job-highlights">
+                            <li>Served on iAchieve Leadership Team overseeing $16M district-wide technology initiative</li>
+                            <li>Coordinated technology integration initiatives across multiple K-4 elementary campuses</li>
+                            <li>Developed eLearning curricula and professional development courses for educators</li>
+                            <li>Led communication between 70+ content writers, teachers, administrators, and parents</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="job-title">Science Lab Teacher/Full Time Mentor</h3>
+                        <p class="job-meta">Houston ISD, Texas | June 2006 - Mar 2010</p>
+                        <ul class="job-highlights">
+                            <li>Designed and implemented district-aligned science curriculum for 650+ K-3 students</li>
+                            <li>Provided coaching support and modeling of best practices in the teacher's classroom</li>
+                            <li>Developed and led professional development on inquiry-based science instruction</li>
+                            <li>Assisted beginning teachers with curriculum, structure of classrooms, classroom management procedures and lesson planning</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="achievements" id="achievements">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Impact & Recognition</h2>
+                <p class="section-intro">
+                    Measurable outcomes that demonstrate commitment to excellence, innovation, and educational equity.
+                </p>
+            </div>
+            <div class="achievements-grid">
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">💰</div>
+                    <div class="achievement-value">$824K+</div>
+                    <div class="achievement-label">Total Grant Funding Secured & Managed</div>
+                </div>
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">🎓</div>
+                    <div class="achievement-value">1,300+</div>
+                    <div class="achievement-label">Students Impacted Weekly</div>
+                </div>
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">👥</div>
+                    <div class="achievement-value">1,000+</div>
+                    <div class="achievement-label">Educators Trained</div>
+                </div>
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">🏫</div>
+                    <div class="achievement-value">10+</div>
+                    <div class="achievement-label">Districts Supported</div>
+                </div>
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">🏆</div>
+                    <div class="achievement-value">NSF</div>
+                    <div class="achievement-label">PAEMST Committee Member</div>
+                </div>
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">📚</div>
+                    <div class="achievement-value">Published</div>
+                    <div class="achievement-label">Science and Children Journal</div>
+                </div>
+                <a href="https://drive.google.com/file/d/18gmGSO4KpNyTsOTHJLogL_3Mk14qVKVr/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="achievement-card achievement-card-link reveal">
+                    <div class="achievement-icon">📷</div>
+                    <div class="achievement-value">Science In A Snapshot</div>
+                    <div class="achievement-label">Video Presentation</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonial" id="testimonial">
+        <div class="container">
+            <div class="testimonial-wrapper">
+                <div class="testimonial-intro reveal">
+                    <h2>What Others Say</h2>
+                    <p>Voices from colleagues, administrators, and students who have experienced the impact firsthand.</p>
+                </div>
+
+                <div class="testimonial-carousel reveal">
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="carouselTrack">
+                            <!-- Slide 1: Marilyn Thompson -->
+                            <div class="carousel-slide">
+                                <div class="testimonial-image-container">
+                                    <img src="tchr2.png" alt="Teaching in Action" class="testimonial-image">
+                                </div>
+                                <div class="testimonial-quote">
+                                    <p class="testimonial-text">
+                                        I have witnessed him nurture frustrated, reluctant students into confident eager scholars with a passion for knowledge. I've also seen him take gifted students to deep levels of learning while increasing their thirst for knowledge and respect for the process of education. I've personally experienced his impact on teachers at all levels of experience, as he inspired us all to love science, embrace technology, and rediscover the wonders and joys of teaching.
+                                    </p>
+                                    <p class="testimonial-author">— Marilyn Thompson</p>
+                                    <p class="testimonial-role">Retired Educator, Houston ISD</p>
+                                </div>
+                            </div>
+
+                            <!-- Slide 2: Ericka Lawton -->
+                            <div class="carousel-slide">
+                                <div class="testimonial-image-container">
+                                    <img src="tchr2.png" alt="Teaching in Action" class="testimonial-image">
+                                </div>
+                                <div class="testimonial-quote">
+                                    <p class="testimonial-text">
+                                        Alex Jones was a Teaching Fellow and Student Teacher in the Rice University/Houston Museum of Natural Science Master of Arts in Teaching Program. He demonstrated exceptional commitment to science education and showed outstanding ability to engage students in hands-on, inquiry-based learning. His innovative approaches to integrating technology and his dedication to student success made him stand out among his peers.
+                                    </p>
+                                    <p class="testimonial-author">— Ericka Lawton, Ph.D.</p>
+                                    <p class="testimonial-role">Associate Director, Center for STEM Engagement, Rice University</p>
+                                </div>
+                            </div>
+
+                            <!-- Slide 3: Vanessa Flores -->
+                            <div class="carousel-slide">
+                                <div class="testimonial-image-container">
+                                    <img src="tchr2.png" alt="Teaching in Action" class="testimonial-image">
+                                </div>
+                                <div class="testimonial-quote">
+                                    <p class="testimonial-text">
+                                        Mr. Jones is a master educator who brings passion, expertise, and innovation to science instruction. His ability to differentiate instruction ensures all students are challenged and supported. He consistently goes above and beyond to create meaningful learning experiences that inspire curiosity and foster a love of science in every child. His collaborative spirit and leadership have been invaluable to our school community.
+                                    </p>
+                                    <p class="testimonial-author">— Vanessa Flores</p>
+                                    <p class="testimonial-role">Principal, Houston ISD</p>
+                                </div>
+                            </div>
+
+                            <!-- Slide 4: Parent Testimonial -->
+                            <div class="carousel-slide">
+                                <div class="testimonial-image-container">
+                                    <img src="tchr2.png" alt="Teaching in Action" class="testimonial-image">
+                                </div>
+                                <div class="testimonial-quote">
+                                    <p class="testimonial-text">
+                                        Mr. Jones has been instrumental in developing my child's love for science. What started as reluctance turned into genuine excitement for learning. He makes complex concepts accessible and fun, and his encouragement has built my child's confidence tremendously. We are grateful for his dedication and the positive impact he's had on our family.
+                                    </p>
+                                    <p class="testimonial-author">— Parent of 5th Grade Student</p>
+                                    <p class="testimonial-role">Houston ISD</p>
+                                </div>
+                            </div>
+
+                            <!-- Slide 5: Student Testimonial -->
+                            <div class="carousel-slide">
+                                <div class="testimonial-image-container">
+                                    <img src="tchr2.png" alt="Teaching in Action" class="testimonial-image">
+                                </div>
+                                <div class="testimonial-quote">
+                                    <p class="testimonial-text">
+                                        Mr. Jones is the best science teacher ever! He makes learning fun and always explains things in a way that makes sense. I used to think science was boring, but now it's my favorite subject. He believes in us and makes us believe we can do anything. Science class is the highlight of my week!
+                                    </p>
+                                    <p class="testimonial-author">— 5th Grade Student</p>
+                                    <p class="testimonial-role">Houston ISD</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Carousel Navigation -->
+                    <div class="carousel-nav">
+                        <button class="carousel-btn" id="prevBtn" aria-label="Previous testimonial">‹</button>
+                        <button class="carousel-btn" id="nextBtn" aria-label="Next testimonial">›</button>
+                    </div>
+
+                    <!-- Carousel Dots -->
+                    <div class="carousel-dots" id="carouselDots"></div>
+                </div>
+
+                <div class="signature-container">
+                    <img src="Alex.png" alt="Alex Jones Signature" class="signature-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-contact">Questions or collaboration inquiries? <a href="mailto:AlexDJones@yahoo.com">AlexDJones@yahoo.com</a></p>
+            <p class="footer-credit">This site created with the help of Claude AI. <img src="claude_logo.png" alt="Claude AI" class="claude-logo"></p>
+            <p class="footer-copyright">&copy; <span id="currentYear"></span> Alex Jones, M.Ed.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set dynamic copyright year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+
+                // Random positions
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+
+                // Random animation delay
+                particle.style.animationDelay = Math.random() * 15 + 's';
+
+                // Random animation duration
+                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize particles
+        createParticles();
+
+        // Flip-in scroll reveal animation
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Back to top button functionality
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 500) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Hide/show navigation on scroll
+        let lastScroll = 0;
+        const nav = document.getElementById('mainNav');
+
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll <= 0) {
+                nav.classList.remove('hidden');
+                return;
+            }
+
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                // Scrolling down
+                nav.classList.add('hidden');
+            } else {
+                // Scrolling up
+                nav.classList.remove('hidden');
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80; // Account for fixed nav
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Testimonial Carousel Functionality
+        const carouselTrack = document.getElementById('carouselTrack');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dotsContainer = document.getElementById('carouselDots');
+        const slides = document.querySelectorAll('.carousel-slide');
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+
+        // Create dots
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+
+        const dots = document.querySelectorAll('.dot');
+
+        function updateCarousel() {
+            const offset = -currentSlide * 100;
+            carouselTrack.style.transform = `translateX(${offset}%)`;
+
+            // Update dots
+            dots.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateCarousel();
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        // Event listeners for carousel buttons
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        // Auto-advance carousel every 8 seconds
+        let autoAdvance = setInterval(nextSlide, 8000);
+
+        // Pause auto-advance on hover
+        const carouselContainer = document.querySelector('.testimonial-carousel');
+        carouselContainer.addEventListener('mouseenter', () => {
+            clearInterval(autoAdvance);
+        });
+
+        carouselContainer.addEventListener('mouseleave', () => {
+            autoAdvance = setInterval(nextSlide, 8000);
+        });
+
+        // Keyboard navigation for carousel
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                prevSlide();
+                clearInterval(autoAdvance);
+                autoAdvance = setInterval(nextSlide, 8000);
+            } else if (e.key === 'ArrowRight') {
+                nextSlide();
+                clearInterval(autoAdvance);
+                autoAdvance = setInterval(nextSlide, 8000);
+            }
+        });
+
+        // Media Modal Functionality
+        const mediaData = [
+            {
+                title: 'FOX 26 Houston',
+                url: 'https://drive.google.com/file/d/1oTU-clxPmz8Ftd-hY96otXzNnNd5MQvs/preview'
+            },
+            {
+                title: 'Houston Life (KPRC Channel 2)',
+                url: 'https://drive.google.com/file/d/1NPXwAy8prV4DjiXnsnfYZVHoR5yQrSeR/preview'
+            },
+            {
+                title: 'The Buzz Magazine',
+                url: 'https://drive.google.com/file/d/1mW1W4kUwX1ZNEyEdWVSDDy5X_xd_2KGU/preview'
+            }
+        ];
+
+        let currentMediaIndex = 0;
+        const mediaModal = document.getElementById('mediaModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalIframe = document.getElementById('modalIframe');
+        const modalDotsContainer = document.getElementById('modalDots');
+
+        // Create modal dots
+        mediaData.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                currentMediaIndex = index;
+                updateModalContent();
+            });
+            modalDotsContainer.appendChild(dot);
+        });
+
+        const modalDots = modalDotsContainer.querySelectorAll('.dot');
+
+        function openMediaModal(index) {
+            currentMediaIndex = index;
+            mediaModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            updateModalContent();
+        }
+
+        function closeMediaModal() {
+            mediaModal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+            modalIframe.src = ''; // Stop loading iframe
+        }
+
+        function navigateMedia(direction) {
+            currentMediaIndex = (currentMediaIndex + direction + mediaData.length) % mediaData.length;
+            updateModalContent();
+        }
+
+        function updateModalContent() {
+            const media = mediaData[currentMediaIndex];
+            modalTitle.textContent = media.title;
+            modalIframe.src = media.url;
+
+            // Update dots
+            modalDots.forEach((dot, index) => {
+                if (index === currentMediaIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // Close modal with ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mediaModal.classList.contains('active')) {
+                closeMediaModal();
+            }
+        });
+
+        // Prevent modal content clicks from closing modal
+        document.querySelector('.modal-content').addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    </script>
+</body>
+</html>

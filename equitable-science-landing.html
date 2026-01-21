@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equitable Science Teaching Resources | Supporting Multilingual Learners in STEM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-teal: #0A4D5C;
+            --ocean-blue: #167D91;
+            --bright-cyan: #2AB3C9;
+            --coral: #FF6B55;
+            --amber: #FFB84D;
+            --cream: #FFF8F0;
+            --soft-gray: #F5F1EB;
+            --charcoal: #2D2D2D;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Background */
+        .bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(circle, var(--bright-cyan) 0%, transparent 70%);
+            opacity: 0.1;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.1; }
+            50% { transform: scale(1.1); opacity: 0.15; }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            width: 100%;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-image-container {
+            flex: 1;
+            position: relative;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(10, 77, 92, 0.3);
+            animation: slideInRight 0.8s ease-out 0.4s both;
+        }
+
+        .hero-image-overlay {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--coral), var(--amber));
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--coral), var(--amber));
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.875rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(2.5rem, 7vw, 5.5rem);
+            line-height: 1.1;
+            color: var(--deep-teal);
+            margin-bottom: 1.5rem;
+            animation: slideInUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: var(--ocean-blue);
+            max-width: 800px;
+            margin-bottom: 3rem;
+            font-weight: 500;
+            animation: slideInUp 0.8s ease-out 0.4s both;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            animation: slideInUp 0.8s ease-out 0.6s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--deep-teal);
+            color: var(--white);
+            box-shadow: 0 4px 20px rgba(10, 77, 92, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--ocean-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(10, 77, 92, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--deep-teal);
+            border: 2px solid var(--deep-teal);
+        }
+
+        .btn-secondary:hover {
+            background: var(--deep-teal);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, var(--deep-teal), var(--ocean-blue));
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            color: var(--white);
+            animation: fadeIn 1s ease-out both;
+        }
+
+        .stat-item:nth-child(1) { animation-delay: 0.2s; }
+        .stat-item:nth-child(2) { animation-delay: 0.4s; }
+        .stat-item:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .stat-number {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 3.5rem;
+            color: var(--amber);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        /* Features Section */
+        .features {
+            max-width: 1400px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--deep-teal);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--ocean-blue);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--coral), var(--amber));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--bright-cyan), var(--ocean-blue));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: rotate(5deg) scale(1.1);
+        }
+
+        .feature-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.5rem;
+            color: var(--deep-teal);
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: var(--charcoal);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-link {
+            color: var(--ocean-blue);
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .feature-link:hover {
+            gap: 1rem;
+        }
+
+        /* Resources Section */
+        .resources {
+            background: var(--soft-gray);
+            padding: 6rem 2rem;
+            margin: 6rem 0;
+        }
+
+        .resources-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .resource-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .resource-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--deep-teal), var(--ocean-blue));
+            color: var(--white);
+            position: relative;
+        }
+
+        .resource-type {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .resource-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .resource-body {
+            padding: 1.5rem;
+        }
+
+        .resource-description {
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .resource-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: var(--soft-gray);
+            color: var(--ocean-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--coral) 0%, var(--amber) 100%);
+            border-radius: 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            color: var(--white);
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .cta-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .cta-button {
+            background: var(--deep-teal);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--charcoal);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: var(--white);
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Archivo Black', sans-serif;
+            margin-bottom: 1rem;
+            color: var(--amber);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--bright-cyan);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-image-container {
+                order: -1;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .features-grid,
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-form {
+                flex-direction: column;
+            }
+
+            .cta-input {
+                width: 100%;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <canvas class="bg-canvas" id="particleCanvas"></canvas>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="hero-tag">Supporting Multilingual Learners in STEM</span>
+                <h1>Equitable Science Teaching Resources</h1>
+                <p class="hero-subtitle">
+                    Transform your science classroom with phenomena-based teaching practices that empower multilingual learners and celebrate linguistic diversity as an asset.
+                </p>
+                <div class="hero-cta">
+                    <a href="#resources" class="btn btn-primary">
+                        Explore Resources
+                        <span>→</span>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <svg class="hero-image" viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Background -->
+                    <rect width="600" height="500" fill="#E8F4F8"/>
+
+                    <!-- Table -->
+                    <ellipse cx="300" cy="380" rx="200" ry="30" fill="#D4E9F0"/>
+                    <rect x="150" y="280" width="300" height="100" fill="#B8DCE8" rx="10"/>
+
+                    <!-- Science equipment on table -->
+                    <!-- Beaker -->
+                    <path d="M 200 310 L 210 350 L 240 350 L 250 310 Z" fill="#A8D5E5" stroke="#0A4D5C" stroke-width="2"/>
+                    <rect x="198" y="305" width="54" height="8" fill="#0A4D5C"/>
+                    <path d="M 210 330 L 215 340 L 235 340 L 240 330 Z" fill="#2AB3C9" opacity="0.6"/>
+
+                    <!-- Test tubes -->
+                    <rect x="380" y="320" width="15" height="40" fill="#FFB84D" rx="3" stroke="#FF6B55" stroke-width="2"/>
+                    <rect x="400" y="315" width="15" height="45" fill="#FF6B55" rx="3" stroke="#0A4D5C" stroke-width="2"/>
+                    <rect x="420" y="325" width="15" height="35" fill="#2AB3C9" rx="3" stroke="#167D91" stroke-width="2"/>
+
+                    <!-- Magnifying glass -->
+                    <circle cx="310" cy="340" r="25" fill="none" stroke="#0A4D5C" stroke-width="3"/>
+                    <line x1="328" y1="358" x2="345" y2="375" stroke="#0A4D5C" stroke-width="4" stroke-linecap="round"/>
+                    <circle cx="310" cy="340" r="15" fill="#E8F4F8" opacity="0.3"/>
+
+                    <!-- Male Teacher (standing, left side) -->
+                    <!-- Head -->
+                    <circle cx="180" cy="180" r="30" fill="#C49B7A"/>
+                    <!-- Hair -->
+                    <path d="M 160 165 Q 180 150 200 165 L 200 180 L 160 180 Z" fill="#2D2D2D"/>
+                    <!-- Body -->
+                    <rect x="155" y="210" width="50" height="65" fill="#167D91" rx="5"/>
+                    <!-- Arms -->
+                    <rect x="135" y="215" width="20" height="45" fill="#167D91" rx="8" transform="rotate(-20 145 215)"/>
+                    <rect x="205" y="215" width="20" height="45" fill="#167D91" rx="8" transform="rotate(20 215 215)"/>
+                    <!-- Hands pointing/gesturing -->
+                    <circle cx="128" cy="255" r="8" fill="#C49B7A"/>
+                    <circle cx="232" cy="255" r="8" fill="#C49B7A"/>
+                    <!-- Legs -->
+                    <rect x="162" y="275" width="18" height="45" fill="#2D2D2D" rx="5"/>
+                    <rect x="180" y="275" width="18" height="45" fill="#2D2D2D" rx="5"/>
+
+                    <!-- Student 1 (Asian girl, front center) -->
+                    <!-- Head -->
+                    <circle cx="280" cy="220" r="22" fill="#E8BC98"/>
+                    <!-- Hair with ponytail -->
+                    <path d="M 265 205 Q 280 195 295 205 L 295 225 L 265 225 Z" fill="#1A1A1A"/>
+                    <circle cx="298" cy="210" r="10" fill="#1A1A1A"/>
+                    <!-- Body -->
+                    <rect x="262" y="242" width="36" height="45" fill="#FF6B55" rx="4"/>
+                    <!-- Arms reaching toward experiment -->
+                    <rect x="245" y="250" width="15" height="35" fill="#FF6B55" rx="6" transform="rotate(-25 252 250)"/>
+                    <rect x="300" y="250" width="15" height="35" fill="#FF6B55" rx="6" transform="rotate(25 308 250)"/>
+                    <circle cx="242" cy="282" r="6" fill="#E8BC98"/>
+                    <circle cx="318" cy="282" r="6" fill="#E8BC98"/>
+                    <!-- Legs -->
+                    <rect x="268" y="287" width="12" height="30" fill="#2AB3C9" rx="4"/>
+                    <rect x="282" y="287" width="12" height="30" fill="#2AB3C9" rx="4"/>
+
+                    <!-- Student 2 (Black boy, right side) -->
+                    <!-- Head -->
+                    <circle cx="380" cy="230" r="20" fill="#8B6F47"/>
+                    <!-- Hair -->
+                    <circle cx="380" cy="220" r="22" fill="#1A1A1A"/>
+                    <!-- Body -->
+                    <rect x="364" y="250" width="32" height="40" fill="#FFB84D" rx="4"/>
+                    <!-- Arms -->
+                    <rect x="348" y="255" width="14" height="30" fill="#FFB84D" rx="6" transform="rotate(-15 355 255)"/>
+                    <rect x="398" y="255" width="14" height="30" fill="#FFB84D" rx="6" transform="rotate(15 405 255)"/>
+                    <circle cx="347" cy="283" r="5" fill="#8B6F47"/>
+                    <circle cx="413" cy="283" r="5" fill="#8B6F47"/>
+                    <!-- Legs -->
+                    <rect x="369" y="290" width="11" height="28" fill="#0A4D5C" rx="4"/>
+                    <rect x="381" y="290" width="11" height="28" fill="#0A4D5C" rx="4"/>
+
+                    <!-- Student 3 (Latina girl, left-center) -->
+                    <!-- Head -->
+                    <circle cx="240" cy="235" r="19" fill="#D4A574"/>
+                    <!-- Hair -->
+                    <path d="M 226 222 Q 240 212 254 222 L 254 240 L 226 240 Z" fill="#3D2817"/>
+                    <!-- Body -->
+                    <rect x="224" y="254" width="32" height="38" fill="#2AB3C9" rx="4"/>
+                    <!-- Arms -->
+                    <rect x="210" y="260" width="13" height="28" fill="#2AB3C9" rx="6" transform="rotate(-20 216 260)"/>
+                    <rect x="258" y="260" width="13" height="28" fill="#2AB3C9" rx="6" transform="rotate(20 264 260)"/>
+                    <circle cx="207" cy="286" r="5" fill="#D4A574"/>
+                    <circle cx="271" cy="286" r="5" fill="#D4A574"/>
+                    <!-- Legs -->
+                    <rect x="229" y="292" width="10" height="26" fill="#FF6B55" rx="3"/>
+                    <rect x="241" y="292" width="10" height="26" fill="#FF6B55" rx="3"/>
+
+                    <!-- Student 4 (White boy with glasses, back right) -->
+                    <!-- Head -->
+                    <circle cx="420" cy="240" r="18" fill="#FADADD"/>
+                    <!-- Hair -->
+                    <path d="M 407 228 Q 420 220 433 228 L 433 245 L 407 245 Z" fill="#8B4513"/>
+                    <!-- Glasses -->
+                    <circle cx="413" cy="240" r="6" fill="none" stroke="#2D2D2D" stroke-width="2"/>
+                    <circle cx="427" cy="240" r="6" fill="none" stroke="#2D2D2D" stroke-width="2"/>
+                    <line x1="419" y1="240" x2="421" y2="240" stroke="#2D2D2D" stroke-width="2"/>
+                    <!-- Body -->
+                    <rect x="406" y="258" width="28" height="35" fill="#167D91" rx="4"/>
+                    <!-- Arms -->
+                    <rect x="393" y="263" width="12" height="25" fill="#167D91" rx="5"/>
+                    <rect x="435" y="263" width="12" height="25" fill="#167D91" rx="5"/>
+                    <circle cx="397" cy="287" r="4" fill="#FADADD"/>
+                    <circle cx="443" cy="287" r="4" fill="#FADADD"/>
+                    <!-- Legs -->
+                    <rect x="410" y="293" width="9" height="24" fill="#2D2D2D" rx="3"/>
+                    <rect x="421" y="293" width="9" height="24" fill="#2D2D2D" rx="3"/>
+
+                    <!-- Floating science icons -->
+                    <g opacity="0.4">
+                        <!-- Atom -->
+                        <circle cx="480" cy="120" r="8" fill="none" stroke="#0A4D5C" stroke-width="2"/>
+                        <circle cx="480" cy="120" r="3" fill="#0A4D5C"/>
+                        <ellipse cx="480" cy="120" rx="15" ry="8" fill="none" stroke="#0A4D5C" stroke-width="1.5" transform="rotate(45 480 120)"/>
+                        <ellipse cx="480" cy="120" rx="15" ry="8" fill="none" stroke="#0A4D5C" stroke-width="1.5" transform="rotate(-45 480 120)"/>
+
+                        <!-- DNA -->
+                        <path d="M 520 180 Q 530 200 520 220" fill="none" stroke="#FF6B55" stroke-width="3"/>
+                        <path d="M 540 180 Q 530 200 540 220" fill="none" stroke="#FFB84D" stroke-width="3"/>
+
+                        <!-- Stars/sparkles -->
+                        <circle cx="100" cy="100" r="3" fill="#FFB84D"/>
+                        <circle cx="520" cy="80" r="2" fill="#2AB3C9"/>
+                        <circle cx="140" cy="140" r="2.5" fill="#FF6B55"/>
+                    </g>
+                </svg>
+                <div class="hero-image-overlay"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <span class="stat-number">3</span>
+                <span class="stat-label">Comprehensive Guides & Frameworks</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">K-12</span>
+                <span class="stat-label">All Grade Levels Supported</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Equity-Centered Approach</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="section-header">
+            <h2 class="section-title">Why This Matters</h2>
+            <p class="section-subtitle">
+                Evidence-based practices that position students as scientists and engineers while advancing their academic and linguistic development simultaneously.
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔬</div>
+                <h3 class="feature-title">Phenomena-Based Learning</h3>
+                <p class="feature-description">
+                    Center every PreK-12 science experience around observable phenomena that students can investigate and explain using their own evidence gathering and sensemaking.
+                </p>
+                <a href="#" class="feature-link">Learn more →</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3 class="feature-title">NGSS + WIDA Integration</h3>
+                <p class="feature-description">
+                    Powerful synergy between Next Generation Science Standards and WIDA language development standards, with key language uses mapped to crosscutting concepts.
+                </p>
+                <a href="#" class="feature-link">Explore framework →</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">✨</div>
+                <h3 class="feature-title">Asset-Based Approach</h3>
+                <p class="feature-description">
+                    Value and nurture students' linguistic and cultural assets. Build on their experiences rather than viewing language development as a deficit.
+                </p>
+                <a href="#" class="feature-link">See examples →</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3 class="feature-title">Shared Responsibility</h3>
+                <p class="feature-description">
+                    All educators share responsibility for English learner success. Practical strategies for collaboration between general education, ESL, and bilingual teachers.
+                </p>
+                <a href="#" class="feature-link">Read blueprint →</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3 class="feature-title">Multimodal Communication</h3>
+                <p class="feature-description">
+                    Leverage multiple means of communication—gestures, images, diagrams, videos, and more—to make science accessible and engaging for all students.
+                </p>
+                <a href="#" class="feature-link">View strategies →</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3 class="feature-title">Rigorous & Equitable</h3>
+                <p class="feature-description">
+                    High expectations with appropriate scaffolds. Students make sense of phenomena through investigations that support rigorous scientific explanations.
+                </p>
+                <a href="#" class="feature-link">Get started →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources" id="resources">
+        <div class="resources-container">
+            <div class="section-header">
+                <h2 class="section-title">Essential Resources</h2>
+                <p class="section-subtitle">
+                    Download comprehensive guides developed by Massachusetts educators and researchers to transform your science instruction.
+                </p>
+            </div>
+
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-type">Quick Reference Guide</div>
+                        <div class="resource-title">Phenomena in the Classroom</div>
+                    </div>
+                    <div class="resource-body">
+                        <p class="resource-description">
+                            Understand what phenomena means and how to use it effectively in your classroom. Includes practical examples comparing effective vs. ineffective implementation.
+                        </p>
+                        <div class="resource-tags">
+                            <span class="tag">PreK-12</span>
+                            <span class="tag">NGSS</span>
+                            <span class="tag">Best Practices</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-type">Comprehensive Framework</div>
+                        <div class="resource-title">Multilingual Learners as Scientists</div>
+                    </div>
+                    <div class="resource-body">
+                        <p class="resource-description">
+                            Explore the synergy of NGSS and WIDA standards with detailed lesson examples for K-12 showing how to integrate language development and science learning.
+                        </p>
+                        <div class="resource-tags">
+                            <span class="tag">WIDA 2020</span>
+                            <span class="tag">Lesson Plans</span>
+                            <span class="tag">Equity</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-type">Vision & Blueprint</div>
+                        <div class="resource-title">Massachusetts Blueprint for EL Success</div>
+                    </div>
+                    <div class="resource-body">
+                        <p class="resource-description">
+                            Complete blueprint with building blocks at classroom, school, district, and state levels. Covers school culture, educator access, opportunity, and future success.
+                        </p>
+                        <div class="resource-tags">
+                            <span class="tag">Policy</span>
+                            <span class="tag">Implementation</span>
+                            <span class="tag">MA DESE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="cta-content">
+            <h2 class="cta-title">Ready to Transform Your Science Teaching?</h2>
+            <p class="cta-description">
+                Join educators across Massachusetts who are implementing equitable, phenomena-based science instruction.
+            </p>
+            <form class="cta-form" onsubmit="event.preventDefault(); alert('Thank you for your interest! This is a demo form.');">
+                <input type="email" class="cta-input" placeholder="Enter your email address" required>
+                <button type="submit" class="cta-button">Download Resources</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About</h3>
+                <p>Equitable Science Teaching Resources provides comprehensive guidance for educators supporting multilingual learners in STEM through phenomena-based instruction.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Phenomena Guide (PDF)</a></li>
+                    <li><a href="#">Multilingual Learners Framework (PDF)</a></li>
+                    <li><a href="#">MA Blueprint for EL Success (PDF)</a></li>
+                    <li><a href="#">Professional Development</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">NGSS Standards</a></li>
+                    <li><a href="#">WIDA Standards</a></li>
+                    <li><a href="#">MA Department of Education</a></li>
+                    <li><a href="#">CESA2 Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Newsletter</a></li>
+                    <li><a href="#">Professional Learning</a></li>
+                    <li><a href="#">Community Forum</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Equitable Science Teaching Resources. Supporting K-12 educators in fostering inclusive, rigorous STEM learning for all students.</p>
+        </div>
+    </footer>
+
+    <!-- Particle Animation Script -->
+    <script>
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 80;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 2 + 1;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(22, 125, 145, 0.5)';
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function connectParticles() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 150) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(22, 125, 145, ${0.2 * (1 - distance / 150)})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+
+            connectParticles();
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .resource-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Intelligence Workstation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero {
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+        }
+        
+        .hero h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.5em;
+            opacity: 0.95;
+        }
+        
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card .icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        
+        .card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .card .button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s ease;
+        }
+        
+        .card .button:hover {
+            transform: scale(1.05);
+        }
+        
+        .quickstart {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-bottom: 40px;
+        }
+        
+        .quickstart h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .quickstart-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .quickstart-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .quickstart-item h3 {
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quickstart-item code {
+            display: block;
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-top: 10px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .features-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-bottom: 40px;
+        }
+        
+        .features-section h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .feature .emoji {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .feature h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .feature p {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 30px;
+            margin-top: 40px;
+        }
+        
+        .footer p {
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>🎙️ Audio Intelligence Workstation</h1>
+            <p>Transform your audio into actionable intelligence</p>
+        </div>
+        
+        <div class="quickstart">
+            <h2>🚀 Quick Start - Get Running in 3 Ways</h2>
+            <div class="quickstart-grid">
+                <div class="quickstart-item">
+                    <h3><span>1️⃣</span> Interactive Menu</h3>
+                    <p>Easiest way - guided workflow</p>
+                    <code>python3 launch.py</code>
+                </div>
+                <div class="quickstart-item">
+                    <h3><span>2️⃣</span> Direct Command</h3>
+                    <p>Fast and powerful</p>
+                    <code>python3 audio_intelligence_workstation.py audio.m4a</code>
+                </div>
+                <div class="quickstart-item">
+                    <h3><span>3️⃣</span> View Demo</h3>
+                    <p>Learn by example</p>
+                    <code>python3 demo_guide.py</code>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cards">
+            <div class="card">
+                <div class="icon">📚</div>
+                <h2>Documentation</h2>
+                <p>Complete guides, examples, and reference materials to get the most out of the system.</p>
+                <a href="START_HERE.md" class="button">Start Here Guide</a>
+                <a href="AUDIO_INTELLIGENCE_README.md" class="button" style="margin-left: 10px;">Full Docs</a>
+            </div>
+            
+            <div class="card">
+                <div class="icon">🎨</div>
+                <h2>Visual Guide</h2>
+                <p>Beautiful, interactive workflow visualization showing how everything works together.</p>
+                <a href="workflow_visualization.html" class="button">View Workflow</a>
+            </div>
+            
+            <div class="card">
+                <div class="icon">💻</div>
+                <h2>Tools & Scripts</h2>
+                <p>Ready-to-use Python scripts for transcription, analysis, and batch processing.</p>
+                <a href="#tools" class="button">See All Tools</a>
+            </div>
+        </div>
+        
+        <div class="features-section">
+            <h2>✨ Powerful Features</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="emoji">🎙️</div>
+                    <h3>AI Transcription</h3>
+                    <p>OpenAI Whisper powered</p>
+                </div>
+                <div class="feature">
+                    <div class="emoji">📊</div>
+                    <h3>Analytics</h3>
+                    <p>Beautiful HTML reports</p>
+                </div>
+                <div class="feature">
+                    <div class="emoji">📋</div>
+                    <h3>Action Items</h3>
+                    <p>Auto-detected tasks</p>
+                </div>
+                <div class="feature">
+                    <div class="emoji">❓</div>
+                    <h3>Questions</h3>
+                    <p>Automatically extracted</p>
+                </div>
+                <div class="feature">
+                    <div class="emoji">📄</div>
+                    <h3>Multiple Formats</h3>
+                    <p>TXT, DOCX, MD, HTML</p>
+                </div>
+                <div class="feature">
+                    <div class="emoji">⚡</div>
+                    <h3>Batch Processing</h3>
+                    <p>Multiple files at once</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="tools" class="features-section">
+            <h2>🛠️ Available Tools</h2>
+            <div style="padding: 20px;">
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 15px;">
+                    <h3 style="color: #667eea; margin-bottom: 10px;">🎯 audio_intelligence_workstation.py</h3>
+                    <p style="color: #666;">Main transcription engine with AI analysis, batch processing, and report generation</p>
+                </div>
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 15px;">
+                    <h3 style="color: #667eea; margin-bottom: 10px;">🚀 launch.py</h3>
+                    <p style="color: #666;">Interactive menu system for easy access to all features</p>
+                </div>
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 15px;">
+                    <h3 style="color: #667eea; margin-bottom: 10px;">📖 demo_guide.py</h3>
+                    <p style="color: #666;">Comprehensive examples and use cases with detailed explanations</p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white; padding: 50px; border-radius: 20px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+            <h2 style="font-size: 2.5em; margin-bottom: 20px;">🎉 You're All Set!</h2>
+            <p style="font-size: 1.3em; margin-bottom: 30px; opacity: 0.95;">
+                Everything you need is ready to go. Start with the interactive launcher or dive right in!
+            </p>
+            <div style="background: rgba(255,255,255,0.2); padding: 20px; border-radius: 10px; display: inline-block; backdrop-filter: blur(10px);">
+                <code style="font-size: 1.2em; color: white;">python3 launch.py</code>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>📁 All files are in this directory</strong></p>
+            <p>Powered by OpenAI Whisper & Claude</p>
+            <p style="margin-top: 20px; opacity: 0.8;">Built with ❤️ for productivity</p>
+        </div>
+    </div>
+</body>
+</html>
