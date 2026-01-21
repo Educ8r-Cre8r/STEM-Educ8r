@@ -1153,6 +1153,34 @@
             border-top: 1px solid rgba(0, 217, 255, 0.2);
             display: flex;
             justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .modal-download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--cyan-bright);
+            color: var(--navy-deep);
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .modal-download-btn:hover {
+            background: #00f0ff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 217, 255, 0.4);
+        }
+
+        .modal-download-btn svg {
+            width: 18px;
+            height: 18px;
         }
 
         .modal-dots {
@@ -2259,6 +2287,12 @@
             </div>
 
             <div class="modal-footer">
+                <a id="modalDownloadBtn" href="" download class="modal-download-btn" style="display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    Download PDF
+                </a>
                 <div class="modal-dots" id="modalDots"></div>
             </div>
         </div>
@@ -2278,23 +2312,23 @@
                     <div class="doc-icon">📄</div>
                     <h3 class="doc-title">Complete Credibility Portfolio</h3>
                     <p class="doc-description">Comprehensive documentation including awards, recommendations, media features, and professional recognition.</p>
-                    <a href="Credibility_Professionalism_Character.pdf" download class="doc-download">
+                    <button onclick="openMediaModal(5)" class="doc-download" style="cursor: pointer; border: none; width: 100%;">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
-                        Download Portfolio
-                    </a>
+                        View Portfolio
+                    </button>
                 </div>
                 <div class="doc-card reveal">
                     <div class="doc-icon">🎓</div>
                     <h3 class="doc-title">Rice University Recommendation</h3>
                     <p class="doc-description">Letter of recommendation from Rice University Center for STEM Engagement highlighting teaching excellence.</p>
-                    <a href="Rice_Recomendation.pdf" download class="doc-download">
+                    <button onclick="openMediaModal(6)" class="doc-download" style="cursor: pointer; border: none; width: 100%;">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
-                        Download Letter
-                    </a>
+                        View Letter
+                    </button>
                 </div>
             </div>
         </div>
@@ -2310,12 +2344,12 @@
                         A career dedicated to advancing STEM education through innovative program design, strategic leadership, and meaningful partnerships at every level of the education system.
                     </p>
                 </div>
-                <a href="AlexJones_cv.pdf" download class="cv-download cv-download-side">
+                <button onclick="openMediaModal(4)" class="cv-download cv-download-side" style="cursor: pointer; border: none;">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
-                    Download CV
-                </a>
+                    View CV
+                </button>
             </div>
             <div class="timeline">
                 <div class="timeline-item">
@@ -2752,19 +2786,41 @@
         const mediaData = [
             {
                 title: 'FOX 26 Houston',
-                url: 'https://drive.google.com/file/d/1oTU-clxPmz8Ftd-hY96otXzNnNd5MQvs/preview'
+                url: 'https://drive.google.com/file/d/1oTU-clxPmz8Ftd-hY96otXzNnNd5MQvs/preview',
+                type: 'video'
             },
             {
                 title: 'Houston Life (KPRC Channel 2)',
-                url: 'https://drive.google.com/file/d/1NPXwAy8prV4DjiXnsnfYZVHoR5yQrSeR/preview'
+                url: 'https://drive.google.com/file/d/1NPXwAy8prV4DjiXnsnfYZVHoR5yQrSeR/preview',
+                type: 'video'
             },
             {
                 title: 'The Buzz Magazine',
-                url: 'https://drive.google.com/file/d/1mW1W4kUwX1ZNEyEdWVSDDy5X_xd_2KGU/preview'
+                url: 'https://drive.google.com/file/d/1mW1W4kUwX1ZNEyEdWVSDDy5X_xd_2KGU/preview',
+                type: 'video'
             },
             {
                 title: 'Science In A Snapshot',
-                url: 'https://drive.google.com/file/d/18gmGSO4KpNyTsOTHJLogL_3Mk14qVKVr/preview'
+                url: 'https://drive.google.com/file/d/18gmGSO4KpNyTsOTHJLogL_3Mk14qVKVr/preview',
+                type: 'video'
+            },
+            {
+                title: 'Curriculum Vitae',
+                url: 'AlexJones_cv.pdf',
+                type: 'pdf',
+                downloadName: 'AlexJones_CV.pdf'
+            },
+            {
+                title: 'Complete Credibility Portfolio',
+                url: 'Credibility_Professionalism_Character.pdf',
+                type: 'pdf',
+                downloadName: 'Credibility_Portfolio.pdf'
+            },
+            {
+                title: 'Rice University Recommendation',
+                url: 'Rice_Recomendation.pdf',
+                type: 'pdf',
+                downloadName: 'Rice_Recommendation.pdf'
             }
         ];
 
@@ -2773,6 +2829,7 @@
         const modalTitle = document.getElementById('modalTitle');
         const modalIframe = document.getElementById('modalIframe');
         const modalDotsContainer = document.getElementById('modalDots');
+        const modalDownloadBtn = document.getElementById('modalDownloadBtn');
 
         // Create modal dots
         mediaData.forEach((_, index) => {
@@ -2810,6 +2867,15 @@
             const media = mediaData[currentMediaIndex];
             modalTitle.textContent = media.title;
             modalIframe.src = media.url;
+
+            // Show download button for PDFs, hide for videos
+            if (media.type === 'pdf') {
+                modalDownloadBtn.style.display = 'inline-flex';
+                modalDownloadBtn.href = media.url;
+                modalDownloadBtn.download = media.downloadName;
+            } else {
+                modalDownloadBtn.style.display = 'none';
+            }
 
             // Update dots
             modalDots.forEach((dot, index) => {
