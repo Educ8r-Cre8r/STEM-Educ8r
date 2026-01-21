@@ -2275,8 +2275,6 @@
         <div class="modal-overlay" onclick="closeMediaModal()"></div>
         <div class="modal-content">
             <button class="modal-close" onclick="closeMediaModal()" aria-label="Close modal">&times;</button>
-            <button class="modal-nav modal-prev" onclick="navigateMedia(-1)" aria-label="Previous media">‹</button>
-            <button class="modal-nav modal-next" onclick="navigateMedia(1)" aria-label="Next media">›</button>
 
             <div class="modal-header">
                 <h3 id="modalTitle"></h3>
@@ -2285,15 +2283,30 @@
             <div class="modal-body">
                 <iframe id="modalIframe" frameborder="0" allowfullscreen></iframe>
             </div>
+        </div>
+    </div>
+
+    <!-- PDF Modal -->
+    <div id="pdfModal" class="media-modal">
+        <div class="modal-overlay" onclick="closePdfModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closePdfModal()" aria-label="Close modal">&times;</button>
+
+            <div class="modal-header">
+                <h3 id="pdfModalTitle"></h3>
+            </div>
+
+            <div class="modal-body">
+                <iframe id="pdfModalIframe" frameborder="0"></iframe>
+            </div>
 
             <div class="modal-footer">
-                <a id="modalDownloadBtn" href="" download class="modal-download-btn" style="display: none;">
+                <a id="pdfDownloadBtn" href="" download class="modal-download-btn">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                     Download PDF
                 </a>
-                <div class="modal-dots" id="modalDots"></div>
             </div>
         </div>
     </div>
@@ -2312,7 +2325,7 @@
                     <div class="doc-icon">📄</div>
                     <h3 class="doc-title">Complete Credibility Portfolio</h3>
                     <p class="doc-description">Comprehensive documentation including awards, recommendations, media features, and professional recognition.</p>
-                    <button onclick="openMediaModal(5)" class="doc-download" style="cursor: pointer; border: none; width: 100%;">
+                    <button onclick="openPdfModal('Complete Credibility Portfolio', 'Credibility_Professionalism_Character.pdf', 'Credibility_Portfolio.pdf')" class="doc-download" style="cursor: pointer; border: none; width: 100%;">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
@@ -2323,7 +2336,7 @@
                     <div class="doc-icon">🎓</div>
                     <h3 class="doc-title">Rice University Recommendation</h3>
                     <p class="doc-description">Letter of recommendation from Rice University Center for STEM Engagement highlighting teaching excellence.</p>
-                    <button onclick="openMediaModal(6)" class="doc-download" style="cursor: pointer; border: none; width: 100%;">
+                    <button onclick="openPdfModal('Rice University Recommendation', 'Rice_Recomendation.pdf', 'Rice_Recommendation.pdf')" class="doc-download" style="cursor: pointer; border: none; width: 100%;">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
@@ -2344,7 +2357,7 @@
                         A career dedicated to advancing STEM education through innovative program design, strategic leadership, and meaningful partnerships at every level of the education system.
                     </p>
                 </div>
-                <button onclick="openMediaModal(4)" class="cv-download cv-download-side" style="cursor: pointer; border: none;">
+                <button onclick="openPdfModal('Curriculum Vitae', 'AlexJones_cv.pdf', 'AlexJones_CV.pdf')" class="cv-download cv-download-side" style="cursor: pointer; border: none;">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
@@ -2465,7 +2478,7 @@
                     <div class="achievement-value">Published</div>
                     <div class="achievement-label">Science and Children Journal</div>
                 </div>
-                <div class="achievement-card achievement-card-link reveal" onclick="openMediaModal(3)" style="cursor: pointer;">
+                <div class="achievement-card achievement-card-link reveal" onclick="openMediaModal('Science In A Snapshot', 'https://drive.google.com/file/d/18gmGSO4KpNyTsOTHJLogL_3Mk14qVKVr/preview')" style="cursor: pointer;">
                     <div class="achievement-icon">📷</div>
                     <div class="achievement-value">Science In A Snapshot</div>
                     <div class="achievement-label">Video Presentation</div>
@@ -2783,108 +2796,21 @@
         });
 
         // Media Modal Functionality
-        const mediaData = [
-            {
-                title: 'FOX 26 Houston',
-                url: 'https://drive.google.com/file/d/1oTU-clxPmz8Ftd-hY96otXzNnNd5MQvs/preview',
-                type: 'video'
-            },
-            {
-                title: 'Houston Life (KPRC Channel 2)',
-                url: 'https://drive.google.com/file/d/1NPXwAy8prV4DjiXnsnfYZVHoR5yQrSeR/preview',
-                type: 'video'
-            },
-            {
-                title: 'The Buzz Magazine',
-                url: 'https://drive.google.com/file/d/1mW1W4kUwX1ZNEyEdWVSDDy5X_xd_2KGU/preview',
-                type: 'video'
-            },
-            {
-                title: 'Science In A Snapshot',
-                url: 'https://drive.google.com/file/d/18gmGSO4KpNyTsOTHJLogL_3Mk14qVKVr/preview',
-                type: 'video'
-            },
-            {
-                title: 'Curriculum Vitae',
-                url: 'AlexJones_cv.pdf',
-                type: 'pdf',
-                downloadName: 'AlexJones_CV.pdf'
-            },
-            {
-                title: 'Complete Credibility Portfolio',
-                url: 'Credibility_Professionalism_Character.pdf',
-                type: 'pdf',
-                downloadName: 'Credibility_Portfolio.pdf'
-            },
-            {
-                title: 'Rice University Recommendation',
-                url: 'Rice_Recomendation.pdf',
-                type: 'pdf',
-                downloadName: 'Rice_Recommendation.pdf'
-            }
-        ];
-
-        let currentMediaIndex = 0;
         const mediaModal = document.getElementById('mediaModal');
         const modalTitle = document.getElementById('modalTitle');
         const modalIframe = document.getElementById('modalIframe');
-        const modalDotsContainer = document.getElementById('modalDots');
-        const modalDownloadBtn = document.getElementById('modalDownloadBtn');
 
-        // Create modal dots
-        mediaData.forEach((_, index) => {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            if (index === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => {
-                currentMediaIndex = index;
-                updateModalContent();
-            });
-            modalDotsContainer.appendChild(dot);
-        });
-
-        const modalDots = modalDotsContainer.querySelectorAll('.dot');
-
-        function openMediaModal(index) {
-            currentMediaIndex = index;
+        function openMediaModal(title, url) {
+            modalTitle.textContent = title;
+            modalIframe.src = url;
             mediaModal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-            updateModalContent();
+            document.body.style.overflow = 'hidden';
         }
 
         function closeMediaModal() {
             mediaModal.classList.remove('active');
-            document.body.style.overflow = ''; // Restore scrolling
-            modalIframe.src = ''; // Stop loading iframe
-        }
-
-        function navigateMedia(direction) {
-            currentMediaIndex = (currentMediaIndex + direction + mediaData.length) % mediaData.length;
-            updateModalContent();
-        }
-
-        function updateModalContent() {
-            const media = mediaData[currentMediaIndex];
-            modalTitle.textContent = media.title;
-            modalIframe.src = media.url;
-
-            // Show download button for PDFs, hide for videos
-            if (media.type === 'pdf') {
-                modalDownloadBtn.style.display = 'inline-flex';
-                modalDownloadBtn.href = media.url;
-                modalDownloadBtn.download = media.downloadName;
-            } else {
-                modalDownloadBtn.style.display = 'none';
-            }
-
-            // Update dots
-            modalDots.forEach((dot, index) => {
-                if (index === currentMediaIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
+            document.body.style.overflow = '';
+            modalIframe.src = '';
         }
 
         // Close modal with ESC key
@@ -2896,6 +2822,39 @@
 
         // Prevent modal content clicks from closing modal
         document.querySelector('.modal-content').addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // PDF Modal Functionality
+        const pdfModal = document.getElementById('pdfModal');
+        const pdfModalTitle = document.getElementById('pdfModalTitle');
+        const pdfModalIframe = document.getElementById('pdfModalIframe');
+        const pdfDownloadBtn = document.getElementById('pdfDownloadBtn');
+
+        function openPdfModal(title, url, downloadName) {
+            pdfModalTitle.textContent = title;
+            pdfModalIframe.src = url;
+            pdfDownloadBtn.href = url;
+            pdfDownloadBtn.download = downloadName;
+            pdfModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePdfModal() {
+            pdfModal.classList.remove('active');
+            document.body.style.overflow = '';
+            pdfModalIframe.src = '';
+        }
+
+        // Close PDF modal with ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && pdfModal.classList.contains('active')) {
+                closePdfModal();
+            }
+        });
+
+        // Prevent PDF modal content clicks from closing modal
+        document.querySelectorAll('.modal-content')[1].addEventListener('click', (e) => {
             e.stopPropagation();
         });
     </script>
