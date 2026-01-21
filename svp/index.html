@@ -342,6 +342,8 @@
             border: 1px solid var(--border);
             transition: all 0.3s ease;
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
         .article-card:before {
@@ -466,6 +468,177 @@
             color: white;
         }
 
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            width: 95vw;
+            height: 95vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease;
+            position: relative;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-header {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--surface);
+            border-radius: 20px 20px 0 0;
+            flex-shrink: 0;
+        }
+
+        .modal-title {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 0;
+            padding-right: 2rem;
+            line-height: 1.3;
+        }
+
+        .modal-close {
+            background: white;
+            border: 1px solid var(--border);
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .modal-close:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .modal-body {
+            flex: 1;
+            overflow: hidden;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .pdf-controls {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            flex-shrink: 0;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .download-btn:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .pdf-viewer {
+            flex: 1;
+            min-height: 0;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--surface);
+        }
+
+        .pdf-viewer iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            transform: translateZ(0);
+            -webkit-font-smoothing: subpixel-antialiased;
+        }
+
+        .read-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            margin-top: auto;
+        }
+
+        .read-more-btn:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+        }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .hero-container {
@@ -520,6 +693,31 @@
             .highlights-grid {
                 grid-template-columns: 1fr;
             }
+
+            .modal.active {
+                padding: 1rem;
+            }
+
+            .modal-content {
+                max-height: 95vh;
+            }
+
+            .modal-header {
+                padding: 1rem 1.5rem;
+            }
+
+            .modal-title {
+                font-size: 1rem;
+            }
+
+            .modal-body {
+                padding: 1rem;
+            }
+
+            .download-btn {
+                font-size: 0.85rem;
+                padding: 0.6rem 1.2rem;
+            }
         }
     </style>
 </head>
@@ -547,8 +745,8 @@
                     students and diverse communities.
                 </p>
                 <div class="cta-group">
-                    <a href="#highlights" class="cta-button">Explore Resources</a>
-                    <a href="#contact" class="cta-button cta-secondary">Get in Touch</a>
+                    <a href="#articles" class="cta-button">Explore Resources</a>
+                    <a href="mailto:AlexDJones@yahoo.com?subject=Science%20for%20Multilingual%20Students" class="cta-button cta-secondary">Get in Touch</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -649,6 +847,10 @@
                     <div class="article-meta">
                         <span class="article-source">Activate Learning IQWST</span>
                     </div>
+                    <button class="read-more-btn" onclick="openModal('modal1')">
+                        <span>Read Article</span>
+                        <span>→</span>
+                    </button>
                 </article>
 
                 <!-- Article 2 -->
@@ -669,6 +871,10 @@
                         <span class="article-author">Dr. Ruslana A. Westerlund & Dr. Emily Adah Miller</span>
                         <span class="article-source">CESA 2 Language & Culture Center</span>
                     </div>
+                    <button class="read-more-btn" onclick="openModal('modal2')">
+                        <span>Read Article</span>
+                        <span>→</span>
+                    </button>
                 </article>
 
                 <!-- Article 3 -->
@@ -689,6 +895,10 @@
                         <span class="article-author">Alex D. Jones</span>
                         <span class="article-source">Science and Children, January 2010</span>
                     </div>
+                    <button class="read-more-btn" onclick="openModal('modal3')">
+                        <span>Read Article</span>
+                        <span>→</span>
+                    </button>
                 </article>
 
                 <!-- Article 4 -->
@@ -709,6 +919,10 @@
                         <span class="article-author">Philip Bell, Deb Morrison & Angela DeBarger</span>
                         <span class="article-source">STEM Teaching Tool #31, November 2015</span>
                     </div>
+                    <button class="read-more-btn" onclick="openModal('modal4')">
+                        <span>Read Article</span>
+                        <span>→</span>
+                    </button>
                 </article>
 
                 <!-- Article 5 -->
@@ -728,6 +942,10 @@
                     <div class="article-meta">
                         <span class="article-source">Department of Elementary and Secondary Education</span>
                     </div>
+                    <button class="read-more-btn" onclick="openModal('modal5')">
+                        <span>Read Article</span>
+                        <span>→</span>
+                    </button>
                 </article>
 
                 <!-- Article 6 -->
@@ -747,6 +965,10 @@
                     <div class="article-meta">
                         <span class="article-source">Dept. of Elementary and Secondary Education, June 2019</span>
                     </div>
+                    <button class="read-more-btn" onclick="openModal('modal6')">
+                        <span>Read Article</span>
+                        <span>→</span>
+                    </button>
                 </article>
 
                 <!-- Article 7 -->
@@ -767,10 +989,162 @@
                         <span class="article-author">Jo Napolitano</span>
                         <span class="article-source">The 74 Million, April 25, 2023</span>
                     </div>
+                    <button class="read-more-btn" onclick="openModal('modal7')">
+                        <span>Read Article</span>
+                        <span>→</span>
+                    </button>
                 </article>
             </div>
         </div>
     </section>
+
+    <!-- Modal Windows for PDFs -->
+    <!-- Modal 1: Driving Question Board -->
+    <div id="modal1" class="modal" onclick="closeModalOnBackdrop(event, 'modal1')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3 class="modal-title">How Does a Driving Question Board Promote the Shift from 'Learning it' to 'Figuring it Out'?</h3>
+                <button class="modal-close" onclick="closeModal('modal1')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="pdf-controls">
+                    <a href="Articles/Driving-Question-Board.pdf" download class="download-btn">
+                        <span>⬇</span>
+                        <span>Download PDF</span>
+                    </a>
+                </div>
+                <div class="pdf-viewer">
+                    <iframe src="Articles/Driving-Question-Board.pdf#view=FitH&toolbar=1&navpanes=1"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Multilingual Learners -->
+    <div id="modal2" class="modal" onclick="closeModalOnBackdrop(event, 'modal2')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3 class="modal-title">Multilingual Learners as Scientists: The Synergy of NGSS and WIDA</h3>
+                <button class="modal-close" onclick="closeModal('modal2')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="pdf-controls">
+                    <a href="Articles/Multilingual-Learners-as-Scientists.pdf" download class="download-btn">
+                        <span>⬇</span>
+                        <span>Download PDF</span>
+                    </a>
+                </div>
+                <div class="pdf-viewer">
+                    <iframe src="Articles/Multilingual-Learners-as-Scientists.pdf#view=FitH&toolbar=1&navpanes=1"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: Science via Photography -->
+    <div id="modal3" class="modal" onclick="closeModalOnBackdrop(event, 'modal3')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3 class="modal-title">Science via Photography: Using digital media to enhance animal adaptation and diversity lessons</h3>
+                <button class="modal-close" onclick="closeModal('modal3')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="pdf-controls">
+                    <a href="Articles/NSTA article.pdf" download class="download-btn">
+                        <span>⬇</span>
+                        <span>Download PDF</span>
+                    </a>
+                </div>
+                <div class="pdf-viewer">
+                    <iframe src="Articles/NSTA article.pdf#view=FitH&toolbar=1&navpanes=1"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 4: STEM Investigations -->
+    <div id="modal4" class="modal" onclick="closeModalOnBackdrop(event, 'modal4')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3 class="modal-title">How to launch STEM investigations that build on student and community interests and expertise</h3>
+                <button class="modal-close" onclick="closeModal('modal4')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="pdf-controls">
+                    <a href="Articles/STEM-Teaching-Tool-31-Building-on-Student-Interest.pdf" download class="download-btn">
+                        <span>⬇</span>
+                        <span>Download PDF</span>
+                    </a>
+                </div>
+                <div class="pdf-viewer">
+                    <iframe src="Articles/STEM-Teaching-Tool-31-Building-on-Student-Interest.pdf#view=FitH&toolbar=1&navpanes=1"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 5: Vision and Blueprint -->
+    <div id="modal5" class="modal" onclick="closeModalOnBackdrop(event, 'modal5')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3 class="modal-title">Vision and Blueprint for English Learner Success</h3>
+                <button class="modal-close" onclick="closeModal('modal5')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="pdf-controls">
+                    <a href="Articles/blueprint.pdf" download class="download-btn">
+                        <span>⬇</span>
+                        <span>Download PDF</span>
+                    </a>
+                </div>
+                <div class="pdf-viewer">
+                    <iframe src="Articles/blueprint.pdf#view=FitH&toolbar=1&navpanes=1"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 6: Phenomena Guide -->
+    <div id="modal6" class="modal" onclick="closeModalOnBackdrop(event, 'modal6')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3 class="modal-title">Quick Reference Guide: Phenomena in the Classroom</h3>
+                <button class="modal-close" onclick="closeModal('modal6')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="pdf-controls">
+                    <a href="Articles/qrg-phenomena.pdf" download class="download-btn">
+                        <span>⬇</span>
+                        <span>Download PDF</span>
+                    </a>
+                </div>
+                <div class="pdf-viewer">
+                    <iframe src="Articles/qrg-phenomena.pdf#view=FitH&toolbar=1&navpanes=1"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 7: English Learners Article -->
+    <div id="modal7" class="modal" onclick="closeModalOnBackdrop(event, 'modal7')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3 class="modal-title">As Schools Brace for More English Learners, How Well Are They Being Served Now</h3>
+                <button class="modal-close" onclick="closeModal('modal7')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="pdf-controls">
+                    <a href="Articles/the74million.org-As Schools Brace for More English Learners How Well Are They Being Served Now.pdf" download class="download-btn">
+                        <span>⬇</span>
+                        <span>Download PDF</span>
+                    </a>
+                </div>
+                <div class="pdf-viewer">
+                    <iframe src="Articles/the74million.org-As Schools Brace for More English Learners How Well Are They Being Served Now.pdf#view=FitH&toolbar=1&navpanes=1"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer id="contact">
@@ -791,6 +1165,40 @@
     </footer>
 
     <script>
+        // Modal Functions
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        }
+
+        function closeModalOnBackdrop(event, modalId) {
+            if (event.target === event.currentTarget) {
+                closeModal(modalId);
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const activeModal = document.querySelector('.modal.active');
+                if (activeModal) {
+                    activeModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        });
+
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
