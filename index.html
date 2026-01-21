@@ -1139,12 +1139,22 @@
             flex: 1;
             padding: 2rem;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .modal-body iframe {
             width: 100%;
             height: 100%;
             border: none;
+            border-radius: 4px;
+        }
+
+        .modal-body img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
             border-radius: 4px;
         }
 
@@ -2281,7 +2291,8 @@
             </div>
 
             <div class="modal-body">
-                <iframe id="modalIframe" frameborder="0" allowfullscreen></iframe>
+                <iframe id="modalIframe" frameborder="0" allowfullscreen style="display: none;"></iframe>
+                <img id="modalImage" style="display: none;" alt="">
             </div>
         </div>
     </div>
@@ -2799,10 +2810,28 @@
         const mediaModal = document.getElementById('mediaModal');
         const modalTitle = document.getElementById('modalTitle');
         const modalIframe = document.getElementById('modalIframe');
+        const modalImage = document.getElementById('modalImage');
 
         function openMediaModal(title, url) {
             modalTitle.textContent = title;
-            modalIframe.src = url;
+
+            // Check if URL is an image (ends with common image extensions)
+            const isImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(url);
+
+            if (isImage) {
+                // Show image, hide iframe
+                modalImage.src = url;
+                modalImage.style.display = 'block';
+                modalIframe.style.display = 'none';
+                modalIframe.src = '';
+            } else {
+                // Show iframe, hide image
+                modalIframe.src = url;
+                modalIframe.style.display = 'block';
+                modalImage.style.display = 'none';
+                modalImage.src = '';
+            }
+
             mediaModal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -2811,6 +2840,7 @@
             mediaModal.classList.remove('active');
             document.body.style.overflow = '';
             modalIframe.src = '';
+            modalImage.src = '';
         }
 
         // Close modal with ESC key
