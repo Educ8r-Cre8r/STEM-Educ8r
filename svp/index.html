@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Science Through Photography | Visual Learning Resources</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0F172A;
+            --secondary: #1E293B;
+            --accent: #3B82F6;
+            --accent-light: #60A5FA;
+            --text-primary: #0F172A;
+            --text-secondary: #64748B;
+            --background: #FFFFFF;
+            --surface: #F8FAFC;
+            --border: #E2E8F0;
+            --gradient-1: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+            --gradient-2: linear-gradient(135deg, #F093FB 0%, #F5576C 100%);
+            --gradient-3: linear-gradient(135deg, #4FACFE 0%, #00F2FE 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-primary);
+            background: var(--background);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(180deg, #FFFFFF 0%, var(--surface) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 70%;
+            height: 140%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(5deg); }
+            66% { transform: translate(-20px, 20px) rotate(-5deg); }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-text h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            letter-spacing: -0.03em;
+        }
+
+        .gradient-text {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.35rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+            background: var(--accent-light);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--border);
+            box-shadow: none;
+        }
+
+        .cta-secondary:hover {
+            background: var(--surface);
+            border-color: var(--accent);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image a {
+            display: block;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .hero-image a:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .hero-image a:hover img {
+            transform: scale(1.02);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 3rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            background: var(--surface);
+            color: var(--accent);
+            font-size: 0.875rem;
+            font-weight: 600;
+            border-radius: 50px;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-family: 'Sora', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Highlights Grid */
+        .highlights {
+            background: var(--primary);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlights:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 70%;
+            height: 140%;
+            background: radial-gradient(circle, rgba(96, 165, 250, 0.1) 0%, transparent 70%);
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .highlight-card {
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .highlight-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .highlight-title {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .highlight-text {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+
+        /* Articles Grid */
+        .articles {
+            background: var(--surface);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .article-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-1);
+            border-radius: 20px 20px 0 0;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-color: transparent;
+        }
+
+        .article-card:hover:before {
+            transform: scaleX(1);
+        }
+
+        .article-card:nth-child(3n+2):before {
+            background: var(--gradient-2);
+        }
+
+        .article-card:nth-child(3n+3):before {
+            background: var(--gradient-3);
+        }
+
+        .article-title {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            line-height: 1.4;
+        }
+
+        .article-summary {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            padding: 0.4rem 0.9rem;
+            background: var(--surface);
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-weight: 500;
+            border-radius: 8px;
+        }
+
+        .article-quote {
+            padding: 1.25rem;
+            background: var(--surface);
+            border-left: 3px solid var(--accent);
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            margin-top: 1.5rem;
+        }
+
+        .article-author {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .article-source {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-text {
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .footer-email {
+            color: var(--accent-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .footer-email:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 2rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .hero-container {
+                padding: 0 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.15rem;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            section {
+                padding: 4rem 2rem;
+            }
+
+            .section-title {
+                font-size: 2.25rem;
+            }
+
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Science Through Photography</div>
+            <ul class="nav-links">
+                <li><a href="#highlights">Key Themes</a></li>
+                <li><a href="#articles">Articles</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>See Science <span class="gradient-text">Everywhere</span></h1>
+                <p class="hero-subtitle">
+                    Explore groundbreaking research and practical strategies that harness the power of photography
+                    to make science accessible, engaging, and meaningful for all learners—especially multilingual
+                    students and diverse communities.
+                </p>
+                <div class="cta-group">
+                    <a href="#highlights" class="cta-button">Explore Resources</a>
+                    <a href="#contact" class="cta-button cta-secondary">Get in Touch</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <a href="infographic.png" target="_blank" rel="noopener noreferrer">
+                    <img src="infographic.png" alt="Science Through Photography Infographic">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section class="highlights" id="highlights">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="background: rgba(255,255,255,0.1); color: white;">Core Themes</span>
+                <h2 class="section-title" style="color: white;">What We Stand For</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">
+                    Six foundational principles that guide our approach to visual science education
+                </p>
+            </div>
+
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <div class="highlight-icon">📸</div>
+                    <h3 class="highlight-title">Visual Documentation</h3>
+                    <p class="highlight-text">
+                        Photography and visual media transform abstract science concepts into tangible, accessible learning experiences that connect classroom content to students' lived experiences.
+                    </p>
+                </div>
+
+                <div class="highlight-card">
+                    <div class="highlight-icon">🌍</div>
+                    <h3 class="highlight-title">Cultural Responsiveness</h3>
+                    <p class="highlight-text">
+                        Leveraging students' cultural backgrounds, community knowledge, and home languages as assets in science education creates more equitable and engaging learning environments.
+                    </p>
+                </div>
+
+                <div class="highlight-card">
+                    <div class="highlight-icon">💭</div>
+                    <h3 class="highlight-title">Student-Centered Inquiry</h3>
+                    <p class="highlight-text">
+                        Moving from teacher-directed instruction to student-driven investigation empowers learners to ask questions, gather evidence, and construct their own understanding of phenomena.
+                    </p>
+                </div>
+
+                <div class="highlight-card">
+                    <div class="highlight-icon">🗣️</div>
+                    <h3 class="highlight-title">Multimodal Communication</h3>
+                    <p class="highlight-text">
+                        Supporting multiple ways to access, process, and express scientific thinking—through images, text, speech, and action—makes science learning accessible to all students.
+                    </p>
+                </div>
+
+                <div class="highlight-card">
+                    <div class="highlight-icon">🔍</div>
+                    <h3 class="highlight-title">Phenomena-Based Learning</h3>
+                    <p class="highlight-text">
+                        Grounding instruction in observable, personally relevant phenomena motivates authentic investigation and helps students see science as a tool for understanding their world.
+                    </p>
+                </div>
+
+                <div class="highlight-card">
+                    <div class="highlight-icon">🤝</div>
+                    <h3 class="highlight-title">Equity & Access</h3>
+                    <p class="highlight-text">
+                        Ensuring all learners—particularly multilingual students and those from diverse communities—have the support, resources, and high expectations needed to succeed in science.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="articles" id="articles">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Research</span>
+                <h2 class="section-title">Featured Resources</h2>
+                <p class="section-subtitle">Evidence-based strategies for visual science learning</p>
+            </div>
+
+            <div class="articles-grid">
+                <!-- Article 1 -->
+                <article class="article-card">
+                    <h3 class="article-title">How Does a Driving Question Board Promote the Shift from 'Learning it' to 'Figuring it Out'?</h3>
+                    <p class="article-summary">
+                        This article explains how a Driving Question Board (DQB) serves as a visual reference tool to help students and teachers track learning progress throughout a science unit.
+                    </p>
+                    <div class="article-tags">
+                        <span class="tag">Inquiry-based learning</span>
+                        <span class="tag">Visual learning tools</span>
+                        <span class="tag">Student questioning</span>
+                    </div>
+                    <blockquote class="article-quote">
+                        "The Driving Question Board serves as a visual reference to focus students' attention, record what they have learned, show where they have been and where they are going."
+                    </blockquote>
+                    <div class="article-meta">
+                        <span class="article-source">Activate Learning IQWST</span>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="article-card">
+                    <h3 class="article-title">Multilingual Learners as Scientists: The Synergy of NGSS and WIDA</h3>
+                    <p class="article-summary">
+                        This article demonstrates how the Next Generation Science Standards (NGSS) and WIDA 2020 Standards work together to support multilingual learners in science education.
+                    </p>
+                    <div class="article-tags">
+                        <span class="tag">Multilingual learner support</span>
+                        <span class="tag">NGSS & WIDA integration</span>
+                        <span class="tag">Multimodality</span>
+                    </div>
+                    <blockquote class="article-quote">
+                        "Science is all around us. Science is on a medicine bottle, condensation on your window, dish soap bubbling up in hot water, oil splattering in a frying pan."
+                    </blockquote>
+                    <div class="article-meta">
+                        <span class="article-author">Dr. Ruslana A. Westerlund & Dr. Emily Adah Miller</span>
+                        <span class="article-source">CESA 2 Language & Culture Center</span>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="article-card">
+                    <h3 class="article-title">Science via Photography: Using digital media to enhance animal adaptation and diversity lessons</h3>
+                    <p class="article-summary">
+                        This article describes how educators can use photography to enhance science lessons about habitat and adaptation.
+                    </p>
+                    <div class="article-tags">
+                        <span class="tag">Photography in teaching</span>
+                        <span class="tag">Visual literacy</span>
+                        <span class="tag">Vocabulary development</span>
+                    </div>
+                    <blockquote class="article-quote">
+                        "The photographs are breathtaking, the possibilities are endless, and your students will truly see that science is everywhere."
+                    </blockquote>
+                    <div class="article-meta">
+                        <span class="article-author">Alex D. Jones</span>
+                        <span class="article-source">Science and Children, January 2010</span>
+                    </div>
+                </article>
+
+                <!-- Article 4 -->
+                <article class="article-card">
+                    <h3 class="article-title">How to launch STEM investigations that build on student and community interests and expertise</h3>
+                    <p class="article-summary">
+                        This STEM Teaching Tool explains the self-documentation strategy, where students use photo documentation to identify personally compelling phenomena from their everyday lives.
+                    </p>
+                    <div class="article-tags">
+                        <span class="tag">Interest-driven learning</span>
+                        <span class="tag">Self-documentation</span>
+                        <span class="tag">Cultural responsiveness</span>
+                    </div>
+                    <blockquote class="article-quote">
+                        "There are literally millions of potentially interesting things in the world to see, to do, to learn about. But they don't become actually interesting until we devote attention to them."
+                    </blockquote>
+                    <div class="article-meta">
+                        <span class="article-author">Philip Bell, Deb Morrison & Angela DeBarger</span>
+                        <span class="article-source">STEM Teaching Tool #31, November 2015</span>
+                    </div>
+                </article>
+
+                <!-- Article 5 -->
+                <article class="article-card">
+                    <h3 class="article-title">Vision and Blueprint for English Learner Success</h3>
+                    <p class="article-summary">
+                        This document presents a comprehensive vision and blueprint for English learner education, organized around four pillars: School Culture, Access to Educators, Opportunity and Support, and A Plan for Future Success.
+                    </p>
+                    <div class="article-tags">
+                        <span class="tag">English learner success</span>
+                        <span class="tag">Asset-based teaching</span>
+                        <span class="tag">Family engagement</span>
+                    </div>
+                    <blockquote class="article-quote">
+                        "English learners are taught by effective, well-prepared, and culturally responsive educators who hold them to high standards and have the resources and professional learning they need."
+                    </blockquote>
+                    <div class="article-meta">
+                        <span class="article-source">Department of Elementary and Secondary Education</span>
+                    </div>
+                </article>
+
+                <!-- Article 6 -->
+                <article class="article-card">
+                    <h3 class="article-title">Quick Reference Guide: Phenomena in the Classroom</h3>
+                    <p class="article-summary">
+                        This guide clarifies what phenomena are in science education and how to use them effectively. It explains that a scientific phenomenon is an observable event that students can investigate.
+                    </p>
+                    <div class="article-tags">
+                        <span class="tag">Phenomena-based instruction</span>
+                        <span class="tag">Student investigation</span>
+                        <span class="tag">NGSS alignment</span>
+                    </div>
+                    <blockquote class="article-quote">
+                        "Teaching with phenomena is providing students with an authentic experience that engages students in asking questions and then establishing evidence of the content principles."
+                    </blockquote>
+                    <div class="article-meta">
+                        <span class="article-source">Dept. of Elementary and Secondary Education, June 2019</span>
+                    </div>
+                </article>
+
+                <!-- Article 7 -->
+                <article class="article-card">
+                    <h3 class="article-title">As Schools Brace for More English Learners, How Well Are They Being Served Now</h3>
+                    <p class="article-summary">
+                        This investigative article examines how school districts across the United States are serving English learners amid growing enrollment and teacher shortages.
+                    </p>
+                    <div class="article-tags">
+                        <span class="tag">English learner enrollment</span>
+                        <span class="tag">Teacher shortages</span>
+                        <span class="tag">Resource allocation</span>
+                    </div>
+                    <blockquote class="article-quote">
+                        "Smaller class sizes give children time to talk."
+                    </blockquote>
+                    <div class="article-meta">
+                        <span class="article-author">Jo Napolitano</span>
+                        <span class="article-source">The 74 Million, April 25, 2023</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <p class="footer-text" style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">
+                Science Through Photography
+            </p>
+            <p class="footer-text">
+                Connecting Visual Discovery with Equitable Science Education
+            </p>
+            <p class="footer-text" style="margin-top: 1.5rem;">
+                Questions or collaboration inquiries? <a href="mailto:mr.alexdjones@gmail.com" class="footer-email">mr.alexdjones@gmail.com</a>
+            </p>
+            <p class="footer-text" style="margin-top: 2rem; opacity: 0.5; font-size: 0.85rem;">
+                © 2024 Science Through Photography. All resources featured are used for educational purposes.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 50);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.article-card, .highlight-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+
+        // Nav scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 100) {
+                nav.style.padding = '1rem 0';
+                nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.05)';
+            } else {
+                nav.style.padding = '1.5rem 0';
+                nav.style.boxShadow = 'none';
+            }
+
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
