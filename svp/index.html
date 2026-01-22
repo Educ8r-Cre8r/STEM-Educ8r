@@ -791,7 +791,6 @@
                 <div class="cta-group">
                     <a href="#articles" class="cta-button">Explore Resources</a>
                     <button onclick="openModal('videoModal')" class="cta-button cta-spark">The Spark ✨</button>
-                    <a href="mailto:AlexDJones@yahoo.com?subject=Science%20for%20Multilingual%20Students" class="cta-button cta-secondary">Get in Touch</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -1204,6 +1203,13 @@
         </div>
     </div>
 
+    <!-- Author Image Section -->
+    <section style="padding: 4rem 3rem; background: var(--surface); text-align: center;">
+        <div class="container">
+            <img src="Alex.png" alt="Alex D. Jones" style="max-width: 300px; width: 100%; height: auto;">
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer id="contact">
         <div class="footer-content">
@@ -1214,15 +1220,18 @@
                 Connecting Visual Discovery with Equitable Science Education
             </p>
             <p class="footer-text" style="margin-top: 1.5rem;">
-                Questions or collaboration inquiries? <a href="mailto:mr.alexdjones@gmail.com" class="footer-email">mr.alexdjones@gmail.com</a>
+                Questions or collaboration inquiries? <a href="mailto:AlexDJones@yahoo.com" class="footer-email">AlexDJones@yahoo.com</a>
             </p>
             <p class="footer-text" style="margin-top: 2rem; opacity: 0.5; font-size: 0.85rem;">
-                © 2024 Science Through Photography. All resources featured are used for educational purposes.
+                © <span id="copyright-year"></span> Science Through Photography. All resources featured are used for educational purposes.
             </p>
         </div>
     </footer>
 
     <script>
+        // Dynamic Copyright Year
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
         // Modal Functions
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
