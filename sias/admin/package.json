@@ -1,0 +1,31 @@
+{
+  "name": "sias-admin",
+  "version": "1.0.0",
+  "description": "Admin interface for Science In A Snapshot photo gallery",
+  "main": "tools/process-uploads.js",
+  "scripts": {
+    "process": "node tools/process-uploads.js",
+    "push": "node tools/git-auto-commit.js",
+    "test": "node tools/process-uploads.js --test",
+    "verify": "node verify-installation.js",
+    "create-metadata": "node tools/create-upload-metadata.js"
+  },
+  "keywords": [
+    "admin",
+    "photo-gallery",
+    "science",
+    "education"
+  ],
+  "author": "Alex Jones, M.Ed.",
+  "license": "ISC",
+  "dependencies": {
+    "sharp": "^0.33.0",
+    "marked": "^11.0.0",
+    "simple-git": "^3.22.0",
+    "chalk": "^4.1.2"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
