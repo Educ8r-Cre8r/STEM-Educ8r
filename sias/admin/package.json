@@ -9,7 +9,7 @@
     "test": "node tools/process-uploads.js --test",
     "verify": "node verify-installation.js",
     "create-metadata": "node tools/create-upload-metadata.js",
-    "serve": "node tools/api-server.js",
+    "serve": "node tools/api-server-v2.js",
     "list": "node tools/list-photos.js",
     "delete": "node tools/delete-photo.js"
   },
@@ -22,12 +22,12 @@
   "author": "Alex Jones, M.Ed.",
   "license": "ISC",
   "dependencies": {
-    "sharp": "^0.33.0",
+    "chalk": "^4.1.2",
+    "formidable": "^3.5.4",
     "marked": "^11.0.0",
-    "simple-git": "^3.22.0",
-    "chalk": "^4.1.2"
+    "sharp": "^0.33.0",
+    "simple-git": "^3.22.0"
   },
-  "devDependencies": {},
   "engines": {
     "node": ">=16.0.0"
   }
