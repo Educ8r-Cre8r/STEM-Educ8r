@@ -8,7 +8,10 @@
     "push": "node tools/git-auto-commit.js",
     "test": "node tools/process-uploads.js --test",
     "verify": "node verify-installation.js",
-    "create-metadata": "node tools/create-upload-metadata.js"
+    "create-metadata": "node tools/create-upload-metadata.js",
+    "serve": "node tools/api-server.js",
+    "list": "node tools/list-photos.js",
+    "delete": "node tools/delete-photo.js"
   },
   "keywords": [
     "admin",
