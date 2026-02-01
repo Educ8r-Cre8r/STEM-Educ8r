@@ -342,6 +342,25 @@ a:hover {
 .gallery-section {
   padding: var(--spacing-2xl) 0;
   background-color: var(--color-bg-white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Particles Background */
+#particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Ensure gallery content is above particles */
+.gallery-section .container {
+  position: relative;
+  z-index: 1;
 }
 
 /* Category Filters */

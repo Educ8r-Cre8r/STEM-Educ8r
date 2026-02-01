@@ -10,7 +10,7 @@
 <body>
     <!-- Hero Section with Parallax -->
     <section id="hero" class="hero-section">
-        <div class="parallax-background" style="background-image: url('IMG_5343.jpg');">
+        <div class="parallax-background" id="hero-background">
             <div class="parallax-overlay"></div>
         </div>
         <div class="hero-content">
@@ -32,6 +32,8 @@
 
     <!-- Main Gallery Section -->
     <main id="gallery-section" class="gallery-section">
+        <!-- Particles Background -->
+        <div id="particles-js"></div>
         <div class="container">
             <!-- Category Filters -->
             <nav class="category-filters" role="navigation" aria-label="Filter gallery by category">
@@ -214,6 +216,7 @@
     </footer>
     <!-- Scripts -->
     <script src="lib/marked.min.js"></script>
+    <script src="lib/particles.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

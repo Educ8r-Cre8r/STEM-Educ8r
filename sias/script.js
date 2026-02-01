@@ -13,8 +13,46 @@ const state = {
 
 // Initialize on DOM load
 document.addEventListener('DOMContentLoaded', () => {
+  initializeRandomHeroImage();
   initializeApp();
+  initializeParticles();
 });
+
+/**
+ * Initialize random hero background image
+ */
+function initializeRandomHeroImage() {
+  // Array of hero images
+  const heroImages = [
+    'hero_images/hero_img01.jpg',
+    'hero_images/hero_img02.jpg',
+    'hero_images/hero_img03.jpg',
+    'hero_images/hero_img04.jpg'
+  ];
+
+  // Get the last shown image from localStorage to avoid immediate repeats
+  const lastShownImage = localStorage.getItem('lastHeroImage');
+
+  // Filter out the last shown image if it exists
+  let availableImages = heroImages;
+  if (lastShownImage && heroImages.length > 1) {
+    availableImages = heroImages.filter(img => img !== lastShownImage);
+  }
+
+  // Select a random image from available images
+  const randomIndex = Math.floor(Math.random() * availableImages.length);
+  const selectedImage = availableImages[randomIndex];
+
+  // Store the selected image for next time
+  localStorage.setItem('lastHeroImage', selectedImage);
+
+  // Apply the background image
+  const heroBackground = document.getElementById('hero-background');
+  if (heroBackground) {
+    heroBackground.style.backgroundImage = `url('${selectedImage}')`;
+    console.log('[Hero] Selected image:', selectedImage);
+  }
+}
 
 /**
  * Initialize the application
@@ -882,6 +920,89 @@ function handleTutorialInteraction() {
 function resetTutorial() {
   localStorage.removeItem('galleryTutorialCompleted');
   location.reload();
+}
+
+/**
+ * Initialize particles.js for gallery background
+ */
+function initializeParticles() {
+  // Check if particlesJS is available
+  if (typeof particlesJS === 'undefined') {
+    console.warn('[Particles] particles.js library not loaded');
+    return;
+  }
+
+  particlesJS('particles-js', {
+    particles: {
+      number: {
+        value: 80,
+        density: {
+          enable: true,
+          value_area: 800
+        }
+      },
+      color: {
+        value: '#2e86ab'
+      },
+      shape: {
+        type: 'circle',
+        stroke: {
+          width: 0,
+          color: '#000000'
+        }
+      },
+      opacity: {
+        value: 0.4,
+        random: true,
+        anim: {
+          enable: true,
+          speed: 0.8,
+          opacity_min: 0.2,
+          sync: false
+        }
+      },
+      size: {
+        value: 5,
+        random: false,
+        anim: {
+          enable: false,
+          speed: 0,
+          size_min: 5,
+          sync: false
+        }
+      },
+      line_linked: {
+        enable: false
+      },
+      move: {
+        enable: true,
+        speed: 0.8,
+        direction: 'none',
+        random: true,
+        straight: false,
+        out_mode: 'out',
+        bounce: false,
+        attract: {
+          enable: false
+        }
+      }
+    },
+    interactivity: {
+      detect_on: 'canvas',
+      events: {
+        onhover: {
+          enable: false
+        },
+        onclick: {
+          enable: false
+        },
+        resize: true
+      }
+    },
+    retina_detect: true
+  });
+
+  console.log('[Particles] Initialized with color #2e86ab');
 }
 
 // Export functions for onclick handlers in HTML
