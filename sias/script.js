@@ -140,6 +140,9 @@ function renderGallery() {
     const item = createGalleryItem(image);
     galleryGrid.appendChild(item);
   });
+
+  // Initialize tutorial hints for first-time users
+  initializeTutorialHints();
 }
 
 /**
@@ -186,6 +189,15 @@ function createGalleryItem(image) {
   imgElement.style.cursor = 'pointer';
   imgElement.onclick = () => {
     openImageModal(image.imagePath, image.title);
+    handleTutorialInteraction();
+  };
+
+  // Add click handler to notebook button for tutorial tracking
+  const notebookBtn = item.querySelector('.notebook-icon-btn');
+  const originalOnclick = notebookBtn.onclick;
+  notebookBtn.onclick = (e) => {
+    handleTutorialInteraction();
+    openModal(image.id);
   };
 
   return item;
@@ -830,6 +842,48 @@ function handleScrollToGalleryButton() {
   }
 }
 
+/**
+ * Tutorial Hint System
+ * Pulsing visual hints for first-time users
+ */
+
+/**
+ * Initialize tutorial hints on first gallery item
+ */
+function initializeTutorialHints() {
+  // Wait a moment for gallery to render
+  setTimeout(() => {
+    const firstItem = document.querySelector('.gallery-item');
+
+    if (!firstItem) {
+      console.log('[Tutorial] No gallery items found');
+      return;
+    }
+
+    console.log('[Tutorial] Initializing pulsing hints on first item');
+
+    // Add tutorial-active class to enable pulsing animation
+    firstItem.classList.add('tutorial-active');
+    console.log('[Tutorial] Pulsing animation enabled');
+  }, 500);
+}
+
+/**
+ * Handle tutorial interaction - keep hints visible permanently
+ */
+function handleTutorialInteraction() {
+  // No longer needed - we keep the pulsing effect and tooltips permanently
+  console.log('[Tutorial] User interacted with gallery');
+}
+
+/**
+ * Reset tutorial (for testing or user preference)
+ */
+function resetTutorial() {
+  localStorage.removeItem('galleryTutorialCompleted');
+  location.reload();
+}
+
 // Export functions for onclick handlers in HTML
 window.openModal = openModal;
 window.closeModal = closeModal;
@@ -843,3 +897,4 @@ window.closeArkansasPortal = closeArkansasPortal;
 window.openVisionaryModal = openVisionaryModal;
 window.closeVisionaryModal = closeVisionaryModal;
 window.scrollToGallerySmooth = scrollToGallerySmooth;
+window.resetTutorial = resetTutorial; // Export for testing
