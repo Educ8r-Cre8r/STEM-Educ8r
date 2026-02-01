@@ -346,8 +346,8 @@ a:hover {
   overflow: hidden;
 }
 
-/* Particles Background */
-#particles-js {
+/* CSS Particles Background */
+.particles-container {
   position: absolute;
   top: 0;
   left: 0;
@@ -355,6 +355,25 @@ a:hover {
   height: 100%;
   z-index: 0;
   pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: #2e86ab;
+  border-radius: 50%;
+  animation: floatUpDown ease-in-out infinite;
+}
+
+@keyframes floatUpDown {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(var(--drift-x), var(--drift-y));
+  }
 }
 
 /* Ensure gallery content is above particles */

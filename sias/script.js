@@ -27,7 +27,8 @@ function initializeRandomHeroImage() {
     'hero_images/hero_img01.jpg',
     'hero_images/hero_img02.jpg',
     'hero_images/hero_img03.jpg',
-    'hero_images/hero_img04.jpg'
+    'hero_images/hero_img04.jpg',
+    'hero_images/hero_img05.jpg'
   ];
 
   // Get the last shown image from localStorage to avoid immediate repeats
@@ -923,86 +924,55 @@ function resetTutorial() {
 }
 
 /**
- * Initialize particles.js for gallery background
+ * Initialize CSS-based particles for gallery background
  */
 function initializeParticles() {
-  // Check if particlesJS is available
-  if (typeof particlesJS === 'undefined') {
-    console.warn('[Particles] particles.js library not loaded');
+  const container = document.getElementById('particles-container');
+  if (!container) {
+    console.warn('[Particles] Container not found');
     return;
   }
 
-  particlesJS('particles-js', {
-    particles: {
-      number: {
-        value: 80,
-        density: {
-          enable: true,
-          value_area: 800
-        }
-      },
-      color: {
-        value: '#2e86ab'
-      },
-      shape: {
-        type: 'circle',
-        stroke: {
-          width: 0,
-          color: '#000000'
-        }
-      },
-      opacity: {
-        value: 0.4,
-        random: true,
-        anim: {
-          enable: true,
-          speed: 0.8,
-          opacity_min: 0.2,
-          sync: false
-        }
-      },
-      size: {
-        value: 5,
-        random: false,
-        anim: {
-          enable: false,
-          speed: 0,
-          size_min: 5,
-          sync: false
-        }
-      },
-      line_linked: {
-        enable: false
-      },
-      move: {
-        enable: true,
-        speed: 0.8,
-        direction: 'none',
-        random: true,
-        straight: false,
-        out_mode: 'out',
-        bounce: false,
-        attract: {
-          enable: false
-        }
-      }
-    },
-    interactivity: {
-      detect_on: 'canvas',
-      events: {
-        onhover: {
-          enable: false
-        },
-        onclick: {
-          enable: false
-        },
-        resize: true
-      }
-    },
-    retina_detect: true
-  });
+  const particleCount = 400;
 
-  console.log('[Particles] Initialized with color #2e86ab');
+  // Create particles with varying properties
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+
+    // Random position throughout the container
+    const startX = Math.random() * 100;
+    const startY = Math.random() * 100;
+    particle.style.left = startX + '%';
+    particle.style.top = startY + '%';
+
+    // Random animation duration (4-8 seconds for faster motion)
+    const duration = 6 + Math.random() * 4;
+    particle.style.animationDuration = duration + 's';
+
+    // Random delay to stagger animations
+    const delay = Math.random() * 4;
+    particle.style.animationDelay = delay + 's';
+
+    // Random drift amounts for X and Y (increased range)
+    const driftX = (Math.random() - 0.5) * 100; // -50px to +50px
+    const driftY = (Math.random() - 0.5) * 100; // -50px to +50px
+    particle.style.setProperty('--drift-x', driftX + 'px');
+    particle.style.setProperty('--drift-y', driftY + 'px');
+
+    // Slight size variation (4-6px)
+    const size = 4 + Math.random() * 2;
+    particle.style.width = size + 'px';
+    particle.style.height = size + 'px';
+
+    // Opacity variation (0.4-0.6 for better visibility)
+    const opacity = 0.45 + Math.random() * 0.2;
+    particle.style.opacity = opacity;
+
+    container.appendChild(particle);
+  }
+
+  console.log('[Particles] Initialized', particleCount, 'CSS particles');
 }
 
 // Export functions for onclick handlers in HTML
