@@ -1,0 +1,55 @@
+# Dependencies
+tools/node_modules/
+tools/package-lock.json
+
+# Environment variables (contains API keys)
+tools/.env
+.env
+
+# API keys and secrets
+*.key
+*.pem
+config.local.js
+
+# Generated files (can be regenerated)
+tools/categorization-results.json
+tools/server.log
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Backup files
+*.backup
+*.bak
+*-old.*
