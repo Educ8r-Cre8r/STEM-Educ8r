@@ -86,7 +86,9 @@ async function handleUpload(req, res) {
         multiples: true,
         uploadDir: path.join(config.projectRoot, config.uploadsDir),
         keepExtensions: true,
-        maxFileSize: 50 * 1024 * 1024 // 50MB
+        maxFileSize: 50 * 1024 * 1024, // 50MB
+        allowEmptyFiles: true,
+        minFileSize: 0
     });
 
     form.parse(req, async (err, fields, files) => {
@@ -97,6 +99,7 @@ async function handleUpload(req, res) {
 
         try {
             console.log('\n🚀 Processing upload request...');
+            console.log('Files received:', Object.keys(files));
 
             // Parse photos data
             const photosData = JSON.parse(fields.photosData);
@@ -144,6 +147,7 @@ async function handleUpload(req, res) {
 
                 if (markdownFile) {
                     console.log('  Converting markdown to JSON...');
+                    console.log('  Markdown file:', markdownFile.originalFilename || markdownFile.newFilename);
                     const mdPath = markdownFile.filepath;
                     const convertResult = await markdownConverter.convertFile(mdPath, contentPath);
 
@@ -152,11 +156,12 @@ async function handleUpload(req, res) {
                         hasContent = true;
                         await fs.unlink(mdPath); // Clean up temp file
                     } else {
-                        console.log('  ⚠ Markdown conversion failed, creating empty content');
+                        console.log('  ⚠ Markdown conversion failed:', convertResult.error);
+                        console.log('  Creating empty content instead');
                         await markdownConverter.createEmpty(contentPath);
                     }
                 } else {
-                    console.log('  Creating empty content file...');
+                    console.log('  No markdown file provided - creating empty content file...');
                     await markdownConverter.createEmpty(contentPath);
                 }
 
@@ -248,7 +253,9 @@ async function handleRequest(req, res) {
         // Serve gallery images from parent directory
         else if (req.method === 'GET' && url.pathname.startsWith('/images/')) {
             try {
-                const imagePath = path.join(config.projectRoot, url.pathname.substring(1));
+                // Decode URL to handle spaces and special characters
+                const decodedPath = decodeURIComponent(url.pathname.substring(1));
+                const imagePath = path.join(config.projectRoot, decodedPath);
                 const content = await fs.readFile(imagePath);
                 const ext = path.extname(imagePath);
                 const contentTypes = {
@@ -261,6 +268,7 @@ async function handleRequest(req, res) {
                 res.writeHead(200, { 'Content-Type': contentTypes[ext] || 'image/jpeg' });
                 res.end(content);
             } catch (error) {
+                console.error('Image serve error:', error);
                 res.writeHead(404);
                 res.end('Image not found');
             }

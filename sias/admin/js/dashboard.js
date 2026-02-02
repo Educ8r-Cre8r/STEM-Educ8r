@@ -307,8 +307,11 @@ function createPhotoCard(photo) {
         photo.category === 'life-science' ? '🌱 Life Science' :
         photo.category === 'earth-space-science' ? '🌍 Earth & Space' : '⚗️ Physical Science';
 
+    // Encode image path to handle spaces and special characters
+    const encodedImagePath = encodeURIComponent(photo.imagePath).replace(/%2F/g, '/');
+
     card.innerHTML = `
-        <img src="/${photo.imagePath}" alt="${photo.title}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23ddd%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22%3EImage%3C/text%3E%3C/svg%3E'">
+        <img src="/${encodedImagePath}" alt="${photo.title}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23ddd%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22%3EImage%3C/text%3E%3C/svg%3E'">
         <div class="photo-card-body">
             <div class="photo-card-title">${photo.title}</div>
             <div class="photo-card-meta">
