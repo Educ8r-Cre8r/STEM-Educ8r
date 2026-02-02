@@ -140,8 +140,13 @@ function clearAllPhotos() {
 // ===================================
 
 async function uploadPhotos() {
+    console.log('Upload button clicked!');
+    console.log('Photos to upload:', uploadedPhotos.length);
+
     // Validate
     for (let photo of uploadedPhotos) {
+        console.log('Validating photo:', photo.title, 'Category:', photo.category, 'Markdown:', photo.markdownFile?.name);
+
         if (!photo.title.trim()) {
             alert('Please enter a title for all photos');
             return;
@@ -151,6 +156,8 @@ async function uploadPhotos() {
             return;
         }
     }
+
+    console.log('Validation passed, starting upload...');
 
     // Show progress
     document.getElementById('photosCard').style.display = 'none';
@@ -181,12 +188,15 @@ async function uploadPhotos() {
         logMessage(`Uploading ${uploadedPhotos.length} photo(s)...`);
 
         // Upload to server
+        console.log('Sending request to:', `${API_BASE}/upload`);
         const response = await fetch(`${API_BASE}/upload`, {
             method: 'POST',
             body: formData
         });
 
+        console.log('Response status:', response.status);
         const result = await response.json();
+        console.log('Server response:', result);
 
         if (result.success) {
             updateProgress(100, 'Complete!');
@@ -202,8 +212,9 @@ async function uploadPhotos() {
         }
     } catch (error) {
         console.error('Upload error:', error);
+        console.error('Error stack:', error.stack);
         logMessage(`✗ Upload failed: ${error.message}`, 'error');
-        alert('Upload failed: ' + error.message + '\n\nMake sure the server is running (npm run serve)');
+        alert('Upload failed: ' + error.message + '\n\nCheck browser console (F12) for details.\nMake sure the server is running (npm run serve)');
         document.getElementById('progressCard').style.display = 'none';
         document.getElementById('photosCard').style.display = 'block';
     }
