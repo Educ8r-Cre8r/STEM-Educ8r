@@ -245,6 +245,27 @@ async function handleRequest(req, res) {
             await serveStatic(req, res, 'dashboard.html');
         }
 
+        // Serve gallery images from parent directory
+        else if (req.method === 'GET' && url.pathname.startsWith('/images/')) {
+            try {
+                const imagePath = path.join(config.projectRoot, url.pathname.substring(1));
+                const content = await fs.readFile(imagePath);
+                const ext = path.extname(imagePath);
+                const contentTypes = {
+                    '.jpg': 'image/jpeg',
+                    '.jpeg': 'image/jpeg',
+                    '.png': 'image/png',
+                    '.gif': 'image/gif',
+                    '.webp': 'image/webp'
+                };
+                res.writeHead(200, { 'Content-Type': contentTypes[ext] || 'image/jpeg' });
+                res.end(content);
+            } catch (error) {
+                res.writeHead(404);
+                res.end('Image not found');
+            }
+        }
+
         // Serve static files
         else if (req.method === 'GET' && (url.pathname.startsWith('/css/') ||
                                            url.pathname.startsWith('/js/') ||
