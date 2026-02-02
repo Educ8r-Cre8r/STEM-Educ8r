@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-01-31T19:39:26.176Z",
-  "totalImages": 72,
+  "lastUpdated": "2026-02-02T00:00:00.000Z",
+  "totalImages": 76,
   "images": [
     {
       "id": 1,
@@ -648,6 +648,42 @@
       "imagePath": "images/physical-science/p6.jpg",
       "contentFile": "content/physical-science/p6.json",
       "title": "Matter",
+      "hasContent": true
+    },
+    {
+      "id": 73,
+      "filename": "moss_on_rock.jpg",
+      "category": "earth-space-science",
+      "imagePath": "images/earth-space-science/moss_on_rock.jpg",
+      "contentFile": "content/earth-space-science/moss_on_rock.json",
+      "title": "Moss on Rock",
+      "hasContent": true
+    },
+    {
+      "id": 74,
+      "filename": "ornamental_grass.jpg",
+      "category": "earth-space-science",
+      "imagePath": "images/earth-space-science/ornamental_grass.jpg",
+      "contentFile": "content/earth-space-science/ornamental_grass.json",
+      "title": "Ornamental Grass",
+      "hasContent": true
+    },
+    {
+      "id": 75,
+      "filename": "slime_mold.jpg",
+      "category": "life-science",
+      "imagePath": "images/life-science/slime_mold.jpg",
+      "contentFile": "content/life-science/slime_mold.json",
+      "title": "Slime Mold",
+      "hasContent": true
+    },
+    {
+      "id": 76,
+      "filename": "deciduous_trees.jpg",
+      "category": "life-science",
+      "imagePath": "images/life-science/deciduous_trees.jpg",
+      "contentFile": "content/life-science/deciduous_trees.json",
+      "title": "Deciduous Trees",
       "hasContent": true
     }
   ]
