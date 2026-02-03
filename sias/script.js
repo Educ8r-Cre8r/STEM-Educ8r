@@ -313,6 +313,13 @@ async function openModal(imageId) {
   modal.style.display = 'flex';
   document.body.style.overflow = 'hidden'; // Prevent background scrolling
 
+  // Reset scroll position and hide scroll-to-top button
+  modalBody.scrollTop = 0;
+  const scrollBtn = document.querySelector('.modal-scroll-top-btn');
+  if (scrollBtn) {
+    scrollBtn.classList.remove('visible');
+  }
+
   // Update modal header
   document.querySelector('.modal-thumbnail').src = image.imagePath;
   document.querySelector('.modal-thumbnail').alt = image.title;
@@ -990,10 +997,13 @@ function initializeModalScrollButtons() {
 
   // Add scroll event listener to modal body
   modalBody.addEventListener('scroll', () => {
+    console.log('[Modal Scroll] Scroll position:', modalBody.scrollTop);
     if (modalBody.scrollTop > 300) {
       scrollBtn.classList.add('visible');
+      console.log('[Modal Scroll] Button shown');
     } else {
       scrollBtn.classList.remove('visible');
+      console.log('[Modal Scroll] Button hidden');
     }
   });
 

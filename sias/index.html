@@ -103,7 +103,11 @@
                     <p class="modal-category"></p>
                 </div>
                 <button class="close-btn" onclick="closeModal()" aria-label="Close modal">
-                    Close
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="15" y1="9" x2="9" y2="15"></line>
+                        <line x1="9" y1="9" x2="15" y2="15"></line>
+                    </svg>
                 </button>
             </div>
 
@@ -120,7 +124,7 @@
                 <p class="copyright">© <span id="current-year">2026</span> Alex Jones, M.Ed. All rights reserved.</p>
             </div>
 
-            <!-- Scroll to Top Button (Inside Modal) -->
+            <!-- Scroll to Top Button (inside modal-content for proper positioning) -->
             <button class="modal-scroll-top-btn" onclick="scrollModalToTop('modal-body')" aria-label="Scroll to top of content" title="Back to top">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="18 15 12 9 6 15"></polyline>
@@ -138,7 +142,13 @@
                     <h2 id="image-modal-title" class="image-modal-title"></h2>
                     <p id="image-modal-credit" class="image-credit">All photographs were taken by Alex Jones.</p>
                 </div>
-                <button class="close-btn image-modal-close-btn" onclick="closeImageModal()" aria-label="Close image viewer">Close</button>
+                <button class="close-btn image-modal-close-btn" onclick="closeImageModal()" aria-label="Close image viewer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="15" y1="9" x2="9" y2="15"></line>
+                        <line x1="9" y1="9" x2="15" y2="15"></line>
+                    </svg>
+                </button>
             </div>
             <div class="image-modal-body">
                 <img id="modal-image" src="" alt="" />
@@ -152,7 +162,13 @@
         <div class="video-modal-content">
             <div class="video-modal-header">
                 <h2 id="overview-modal-title" class="video-modal-title">Overview</h2>
-                <button class="close-btn video-modal-close-btn" onclick="closeOverviewModal()" aria-label="Close overview video">Close</button>
+                <button class="close-btn video-modal-close-btn" onclick="closeOverviewModal()" aria-label="Close overview video">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="15" y1="9" x2="9" y2="15"></line>
+                        <line x1="9" y1="9" x2="15" y2="15"></line>
+                    </svg>
+                </button>
             </div>
             <div class="video-modal-body">
                 <iframe id="overview-video" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -166,7 +182,13 @@
         <div class="arkansas-modal-content">
             <div class="arkansas-modal-header">
                 <h2 id="arkansas-modal-title">Arkansas State Portal</h2>
-                <button class="close-btn" onclick="closeArkansasPortal()" aria-label="Close Arkansas portal">Close</button>
+                <button class="close-btn" onclick="closeArkansasPortal()" aria-label="Close Arkansas portal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="15" y1="9" x2="9" y2="15"></line>
+                        <line x1="9" y1="9" x2="15" y2="15"></line>
+                    </svg>
+                </button>
             </div>
             <div class="arkansas-modal-body">
                 <iframe id="arkansas-iframe" src="" frameborder="0" allowfullscreen></iframe>
@@ -180,7 +202,13 @@
         <div class="visionary-modal-content">
             <div class="visionary-modal-header">
                 <h2 id="visionary-modal-title">The Visionary</h2>
-                <button class="close-btn" onclick="closeVisionaryModal()" aria-label="Close visionary profile">Close</button>
+                <button class="close-btn" onclick="closeVisionaryModal()" aria-label="Close visionary profile">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="15" y1="9" x2="9" y2="15"></line>
+                        <line x1="9" y1="9" x2="15" y2="15"></line>
+                    </svg>
+                </button>
             </div>
             <div class="visionary-modal-body">
                 <div class="visionary-text">

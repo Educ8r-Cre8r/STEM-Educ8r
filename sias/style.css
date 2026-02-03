@@ -647,9 +647,11 @@ a:hover {
   max-width: var(--content-max-width);
   width: 100%;
   max-height: 90vh;
-  overflow-y: auto;
+  overflow: visible;
   box-shadow: var(--shadow-xl);
   animation: slideUp 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 @keyframes slideUp {
@@ -782,32 +784,39 @@ a:hover {
 }
 
 .close-btn {
-  padding: 0.5rem 1.5rem;
-  border: none;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  font-size: 0.95rem;
-  font-weight: 600;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 2px solid #3b82f5;
+  background: #F18F01;
   color: white;
   cursor: pointer;
-  border-radius: 25px;
+  border-radius: 50%;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 2px 8px rgba(241, 143, 1, 0.3);
 }
 
 .close-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5);
-  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  animation: spin 0.5s ease-in-out;
+  box-shadow: 0 4px 15px rgba(241, 143, 1, 0.5);
+  background: #d67d01;
+}
+
+.close-btn svg {
+  width: 24px;
+  height: 24px;
 }
 
 /* Modal Body */
 .modal-body {
   padding: var(--spacing-xl);
   line-height: var(--line-height-relaxed);
+  overflow-y: auto;
+  flex: 1;
 }
 
 .modal-body h2 {
@@ -1075,25 +1084,7 @@ a:hover {
   font-style: italic;
 }
 
-.image-modal-close-btn {
-  color: var(--color-text-dark);
-  font-size: 2rem;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease;
-  opacity: 1;
-}
-
-.image-modal-close-btn:hover {
-  animation: spin 0.5s ease-in-out;
-}
+/* Removed .image-modal-close-btn override - using base .close-btn styles */
 
 @keyframes spin {
   from {
@@ -1199,25 +1190,7 @@ a:hover {
   flex: 1;
 }
 
-.video-modal-close-btn {
-  color: var(--color-text-dark);
-  font-size: 2rem;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease;
-  opacity: 1;
-}
-
-.video-modal-close-btn:hover {
-  animation: spin 0.5s ease-in-out;
-}
+/* Removed .video-modal-close-btn override - using base .close-btn styles */
 
 .video-modal-body {
   position: relative;
@@ -1358,24 +1331,7 @@ a:hover {
   color: var(--color-text-dark);
 }
 
-.visionary-modal-header .close-btn {
-  color: var(--color-text-dark);
-  font-size: 2rem;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s ease;
-}
-
-.visionary-modal-header .close-btn:hover {
-  transform: scale(1.1);
-}
+/* Removed .visionary-modal-header .close-btn override - using base .close-btn styles */
 
 .visionary-modal-body {
   display: grid;
@@ -1505,8 +1461,8 @@ a:hover {
 
 /* Modal Scroll-to-Top Button */
 .modal-scroll-top-btn {
-  position: fixed;
-  bottom: 2rem;
+  position: absolute;
+  bottom: 1rem;
   right: 2rem;
   width: 56px;
   height: 56px;
@@ -1520,7 +1476,7 @@ a:hover {
   border-radius: 50%;
   cursor: pointer;
   box-shadow: var(--shadow-lg);
-  z-index: 1001;
+  z-index: 10;
   transition: all 0.3s ease;
   opacity: 0;
   visibility: hidden;
