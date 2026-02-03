@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeRandomHeroImage();
   initializeApp();
   initializeParticles();
+  initializeModalScrollButtons();
 });
 
 /**
@@ -975,6 +976,40 @@ function initializeParticles() {
   console.log('[Particles] Initialized', particleCount, 'CSS particles');
 }
 
+/**
+ * Initialize modal scroll-to-top buttons
+ */
+function initializeModalScrollButtons() {
+  const modalBody = document.getElementById('modal-body');
+  const scrollBtn = document.querySelector('.modal-scroll-top-btn');
+
+  if (!modalBody || !scrollBtn) {
+    console.log('[Modal Scroll] Modal body or scroll button not found');
+    return;
+  }
+
+  // Add scroll event listener to modal body
+  modalBody.addEventListener('scroll', () => {
+    if (modalBody.scrollTop > 300) {
+      scrollBtn.classList.add('visible');
+    } else {
+      scrollBtn.classList.remove('visible');
+    }
+  });
+
+  console.log('[Modal Scroll] Scroll-to-top button initialized');
+}
+
+/**
+ * Scroll modal to top
+ */
+function scrollModalToTop(modalBodyId) {
+  const modalBody = document.getElementById(modalBodyId);
+  if (modalBody) {
+    modalBody.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
 // Export functions for onclick handlers in HTML
 window.openModal = openModal;
 window.closeModal = closeModal;
@@ -988,4 +1023,5 @@ window.closeArkansasPortal = closeArkansasPortal;
 window.openVisionaryModal = openVisionaryModal;
 window.closeVisionaryModal = closeVisionaryModal;
 window.scrollToGallerySmooth = scrollToGallerySmooth;
+window.scrollModalToTop = scrollModalToTop;
 window.resetTutorial = resetTutorial; // Export for testing

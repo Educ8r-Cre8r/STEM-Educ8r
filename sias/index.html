@@ -103,7 +103,7 @@
                     <p class="modal-category"></p>
                 </div>
                 <button class="close-btn" onclick="closeModal()" aria-label="Close modal">
-                    <span aria-hidden="true">×</span>
+                    Close
                 </button>
             </div>
 
@@ -119,6 +119,13 @@
             <div class="modal-footer">
                 <p class="copyright">© <span id="current-year">2026</span> Alex Jones, M.Ed. All rights reserved.</p>
             </div>
+
+            <!-- Scroll to Top Button (Inside Modal) -->
+            <button class="modal-scroll-top-btn" onclick="scrollModalToTop('modal-body')" aria-label="Scroll to top of content" title="Back to top">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </button>
         </div>
     </div>
 
@@ -131,7 +138,7 @@
                     <h2 id="image-modal-title" class="image-modal-title"></h2>
                     <p id="image-modal-credit" class="image-credit">All photographs were taken by Alex Jones.</p>
                 </div>
-                <button class="close-btn image-modal-close-btn" onclick="closeImageModal()" aria-label="Close image viewer">×</button>
+                <button class="close-btn image-modal-close-btn" onclick="closeImageModal()" aria-label="Close image viewer">Close</button>
             </div>
             <div class="image-modal-body">
                 <img id="modal-image" src="" alt="" />
@@ -145,7 +152,7 @@
         <div class="video-modal-content">
             <div class="video-modal-header">
                 <h2 id="overview-modal-title" class="video-modal-title">Overview</h2>
-                <button class="close-btn video-modal-close-btn" onclick="closeOverviewModal()" aria-label="Close overview video">×</button>
+                <button class="close-btn video-modal-close-btn" onclick="closeOverviewModal()" aria-label="Close overview video">Close</button>
             </div>
             <div class="video-modal-body">
                 <iframe id="overview-video" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -159,7 +166,7 @@
         <div class="arkansas-modal-content">
             <div class="arkansas-modal-header">
                 <h2 id="arkansas-modal-title">Arkansas State Portal</h2>
-                <button class="close-btn" onclick="closeArkansasPortal()" aria-label="Close Arkansas portal">×</button>
+                <button class="close-btn" onclick="closeArkansasPortal()" aria-label="Close Arkansas portal">Close</button>
             </div>
             <div class="arkansas-modal-body">
                 <iframe id="arkansas-iframe" src="" frameborder="0" allowfullscreen></iframe>
@@ -173,7 +180,7 @@
         <div class="visionary-modal-content">
             <div class="visionary-modal-header">
                 <h2 id="visionary-modal-title">The Visionary</h2>
-                <button class="close-btn" onclick="closeVisionaryModal()" aria-label="Close visionary profile">×</button>
+                <button class="close-btn" onclick="closeVisionaryModal()" aria-label="Close visionary profile">Close</button>
             </div>
             <div class="visionary-modal-body">
                 <div class="visionary-text">
